@@ -30,7 +30,7 @@ python3 -m http.server 8000
 index.html    Notebook setup (site root)
 30-day.html   First 30 days
 notebook.html       Sample notebook (page-turning viewer)
-notebook.js         Page-turn engine: 3D leaves, drag/swipe, spread or single-page view
+notebook.js         Page-curl engine: 2D paper fold (clip-path + reflection), drag/swipe, spread or single page
 notebook-pages.js   The notebook's content, one entry per page, in a small line markup
 favicon.svg   Notebook mark used as the site icon
 manifest.webmanifest  Web app manifest (Add to Home Screen / install)

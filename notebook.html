@@ -84,7 +84,7 @@
   #book { position: absolute; left: 0; top: 0; width: 840px; height: 592px; }
 
   /* page blocks under the leaves: shadow + visible page edges */
-  .block { position: absolute; top: 0; width: 420px; height: 592px; --t: 4px; }
+  .block { position: absolute; top: 0; width: 420px; height: 592px; --t: 4px; z-index: 0; }
   .block::before {                      /* drop shadow */
     content: ""; position: absolute; inset: 4px 0 -2px;
     box-shadow: 0 18px 34px -8px rgba(40,30,15,.35), 0 3px 8px rgba(40,30,15,.18);
@@ -100,31 +100,24 @@
   #blockR { left: 420px; }
   #blockR::after { right: calc(-1 * var(--t)); }
 
-  .leaf {
-    position: absolute; left: 420px; top: 0; width: 420px; height: 592px;
-    transform-origin: 0 50%; transform-style: preserve-3d;
-  }
-  .leaf.off { display: none; }
+  /* every page face is a flat layer in book coordinates (no 3D anywhere) */
   .face {
-    position: absolute; inset: 0; overflow: hidden;
-    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    position: absolute; left: 0; top: 0; width: 420px; height: 592px;
+    overflow: hidden; transform-origin: 0 0; display: none;
   }
-  .face.back { transform: rotateY(180deg); }
-  /* one face at a time (see showBack in notebook.js) */
-  .leaf .face.back, .leaf.sb .face.front { visibility: hidden; }
-  .leaf.sb .face.back { visibility: visible; }
-
-  /* light on a lifted page: --s = sin(angle), 0 at rest, 1 standing upright.
-     darker at the spine, a soft highlight where the paper bows, darker again
-     at the free edge as it curls away from the light                       */
-  .shade { position: absolute; inset: 0; pointer-events: none; z-index: 4; opacity: var(--s, 0); }
-  .front .shade { background: linear-gradient(90deg, rgba(40,26,8,.26) 0%, rgba(40,26,8,.06) 22%, rgba(255,252,240,.16) 58%, rgba(40,26,8,.06) 82%, rgba(40,26,8,.30) 100%); }
-  .back .shade  { background: linear-gradient(270deg, rgba(40,26,8,.26) 0%, rgba(40,26,8,.06) 22%, rgba(255,252,240,.16) 58%, rgba(40,26,8,.06) 82%, rgba(40,26,8,.30) 100%); }
-
-  /* shadows the moving page throws onto the pages underneath */
-  .cast { position: absolute; top: 0; height: 592px; z-index: 900; pointer-events: none; opacity: 0; }
-  .cast.toR { background: linear-gradient(90deg, rgba(35,22,5,.42), rgba(35,22,5,.14) 35%, rgba(35,22,5,0)); }
-  .cast.toL { background: linear-gradient(270deg, rgba(35,22,5,.42), rgba(35,22,5,.14) 35%, rgba(35,22,5,0)); }
+  /* a turn: the flap (reverse of the sheet) sits in a wrapper that throws a
+     soft shadow on whatever it lies over */
+  #flapWrap {
+    position: absolute; left: 0; top: 0; width: 840px; height: 592px;
+    z-index: 5; pointer-events: none; display: none;
+    filter: drop-shadow(0 0 7px rgba(35,22,5,.32)) drop-shadow(-1px 2px 2px rgba(35,22,5,.18));
+  }
+  #flapWrap.hard { filter: drop-shadow(0 2px 9px rgba(35,22,5,.42)); }
+  #flapWrap .face { z-index: 1; }
+  .fx { position: absolute; left: 0; top: 0; width: 840px; height: 592px; pointer-events: none; }
+  #flapWrap .fx { z-index: 2; }
+  .fx.under { z-index: 4; display: none; }
+  @media (prefers-reduced-motion: reduce) { #flapWrap { filter: none; } }
 
   /* ---------- paper ---------- */
   .paper {
@@ -299,8 +292,6 @@
     <div id="book">
       <div class="block" id="blockL"></div>
       <div class="block" id="blockR"></div>
-      <div class="cast" id="castEdge"></div>
-      <div class="cast" id="castSpine"></div>
     </div>
   </div>
   <noscript><p>The sample notebook needs JavaScript to turn its pages.</p></noscript>
