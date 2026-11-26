@@ -27,7 +27,6 @@
   var side = 'R';                   // single-page mode: which half is shown
   var single = false;
   var scale = 1;
-  var DUR = 900;
 
   /* ---------- deterministic jitter so the handwriting is stable ---------- */
   function rng(seed) {
@@ -147,8 +146,35 @@
   }
 
   /* ---------- leaf state ----------
-     Only the leaves around the open spread (and any mid-turn) are rendered.
-     Keeping 84 full-size 3D layers alive would exhaust memory on phones.  */
+     Every leaf has an angle a (0 = resting on the right, 180 = on the left).
+     Turns are driven frame by frame so lighting, the shadows cast on the pages
+     underneath, and dragging all follow the page's real position.
+
+     Only the leaves around the open spread (and any in motion) are rendered:
+     84 full-size 3D layers would exhaust memory on phones.                    */
+  var REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var TURN = REDUCED ? 160 : 780;      // one page turn, ms
+  var anims = {};                      // leaf index -> running animation
+  var rafId = 0;
+  var castEdge = document.getElementById('castEdge');
+  var castSpine = document.getElementById('castSpine');
+  var panDur = 0;
+
+  function bezier(x1, y1, x2, y2) {
+    return function (t) {
+      var u = t;
+      for (var k = 0; k < 8; k++) {
+        var x = 3 * (1 - u) * (1 - u) * u * x1 + 3 * (1 - u) * u * u * x2 + u * u * u - t;
+        var d = 3 * (1 - u) * (1 - u) * x1 + 6 * (1 - u) * u * (x2 - x1) + 3 * u * u * (1 - x2);
+        if (Math.abs(x) < 1e-5 || Math.abs(d) < 1e-6) break;
+        u = Math.max(0, Math.min(1, u - x / d));
+      }
+      return 3 * (1 - u) * (1 - u) * u * y1 + 3 * (1 - u) * u * u * y2 + u * u * u;
+    };
+  }
+  var EASE_TURN = bezier(.45, .02, .18, 1);   // lifts gently, travels, lands softly
+  var EASE_OUT = bezier(.15, .55, .25, 1);    // finishing a drag: keep the hand's speed
+
   function refresh() {
     for (var i = 0; i < N; i++) {
       var lf = leaves[i];
@@ -161,95 +187,140 @@
      WebKit (all iOS browsers): transformed children of a hidden back face still
      paint, so the turned page showed through mirrored.                       */
   function showBack(leaf, on) { if (leaf._sb !== on) { leaf._sb = on; leaf.classList.toggle('sb', on); } }
-  function angleOf(leaf) {
-    var m = getComputedStyle(leaf).transform;
-    if (!m || m === 'none') return 0;
-    var v = m.slice(m.indexOf('(') + 1, -1).split(',');
-    return +v[0];                       // m11 = cos(angle); < 0 once past 90°
-  }
-  function track(leaf) {
-    if (leaf._raf) return;
-    var step = function () {
-      if (leaf._busy) {
-        showBack(leaf, angleOf(leaf) < 0);
-        leaf._raf = requestAnimationFrame(step);
-      } else {
-        leaf._raf = 0;
-        showBack(leaf, leaf._f);
-      }
-    };
-    leaf._raf = requestAnimationFrame(step);
-  }
 
   function baseZ(i, isFlipped) { return isFlipped ? 10 + i : 10 + N - i; }
-  function transformFor(angle) { return 'perspective(2600px) rotateY(' + angle + 'deg)'; }
 
-  function setLeaf(i, toFlipped, instant, dur) {
-    var leaf = leaves[i];
-    var was = leaf._f;
-    leaf._f = toFlipped;
-    if (instant) {
-      leaf._busy = false;
-      leaf.classList.remove('turning');
-      leaf.style.transition = 'none';
-      leaf.style.transform = transformFor(toFlipped ? -180 : 0);
-      leaf.style.zIndex = baseZ(i, toFlipped);
-      showBack(leaf, toFlipped);
-      leaf.offsetWidth; // flush
-      leaf.style.transition = '';
-      return;
-    }
-    if (was === toFlipped && !leaf._drag) return;
-    leaf._drag = false;
-    leaf._busy = true;
-    leaf.classList.remove('off');
-    var d = dur || DUR;
-    leaf.style.transition = 'transform ' + d + 'ms cubic-bezier(.33,.08,.22,1)';
-    leaf.style.zIndex = 1000 + (toFlipped ? i : N - i);
-    leaf.classList.remove('turning'); leaf.offsetWidth;
-    leaf.style.setProperty('--dur', d + 'ms');
-    leaf.classList.add('turning');
-    leaf.style.transform = transformFor(toFlipped ? -180 : 0);
-    track(leaf);
-    clearTimeout(leaf._t);
-    leaf._t = setTimeout(function () {
-      leaf.classList.remove('turning');
-      leaf.style.zIndex = baseZ(i, leaf._f);
-      leaf._busy = false;
-      showBack(leaf, leaf._f);
-      refresh();
-    }, d + 30);
+  function render(i) {
+    var lf = leaves[i], a = lf._a;
+    lf.style.transform = 'perspective(2000px) rotateY(' + (-a).toFixed(2) + 'deg)';
+    lf.style.setProperty('--s', Math.sin(a * Math.PI / 180).toFixed(3));
+    showBack(lf, a > 90);
   }
 
-  function applyFlipped(target, opts) {
-    opts = opts || {};
+  // shadows thrown by the most lifted moving leaf onto the pages underneath
+  function shadows() {
+    var best = -1, bs = 0.015;
+    for (var i = 0; i < N; i++) {
+      var lf = leaves[i];
+      if (!(lf._busy || lf._drag)) continue;
+      var sv = Math.sin(lf._a * Math.PI / 180);
+      if (sv > bs) { bs = sv; best = i; }
+    }
+    if (best < 0) { castEdge.style.opacity = 0; castSpine.style.opacity = 0; return; }
+    var a = leaves[best]._a, c = Math.cos(a * Math.PI / 180), xe = W + W * c;
+    var w = 18 + 70 * bs, ws = 40 + 120 * bs;
+    if (a <= 90) {
+      // page lifting off the right: shadow on the page being revealed, just past its edge
+      var we = Math.min(w, 2 * W - xe);
+      castEdge.className = 'cast toR';
+      castEdge.style.left = xe + 'px'; castEdge.style.width = Math.max(0, we) + 'px';
+      castSpine.className = 'cast toL';
+      castSpine.style.left = (W - ws) + 'px'; castSpine.style.width = ws + 'px';
+    } else {
+      var wl = Math.min(w, xe);
+      castEdge.className = 'cast toL';
+      castEdge.style.left = (xe - wl) + 'px'; castEdge.style.width = Math.max(0, wl) + 'px';
+      castSpine.className = 'cast toR';
+      castSpine.style.left = W + 'px'; castSpine.style.width = ws + 'px';
+    }
+    castEdge.style.opacity = (0.95 * bs).toFixed(3);
+    castSpine.style.opacity = (0.55 * bs).toFixed(3);
+  }
+
+  function tick(now) {
+    rafId = 0;
+    var running = false;
+    for (var k in anims) {
+      var an = anims[k], i = +k, lf = leaves[i];
+      var t = (now - an.t0) / an.dur;
+      if (t < 0) { running = true; continue; }
+      if (t >= 1) t = 1;
+      lf._a = an.from + (an.to - an.from) * an.ease(t);
+      render(i);
+      if (t >= 1) { delete anims[k]; settle(i); } else running = true;
+    }
+    shadows();
+    if (running) rafId = requestAnimationFrame(tick);
+  }
+  function kick() { if (!rafId) rafId = requestAnimationFrame(tick); }
+
+  function settle(i) {
+    var lf = leaves[i];
+    lf._busy = false;
+    if (!lf._drag) lf.style.zIndex = lf._peek ? 1000 + N - i : baseZ(i, lf._f);
+    refresh();
+  }
+
+  function animate(i, to, dur, ease, delay) {
+    var lf = leaves[i];
+    lf._busy = true;
+    lf.classList.remove('off');
+    lf.style.zIndex = 1000 + (to > 90 ? i : N - i);
+    anims[i] = { from: lf._a, to: to, t0: performance.now() + (delay || 0), dur: dur, ease: ease };
+    kick();
+  }
+
+  function setLeaf(i, toFlipped, instant, dur, delay, ease) {
+    var leaf = leaves[i];
+    leaf._f = toFlipped;
+    leaf._peek = false;
+    if (instant) {
+      delete anims[i];
+      leaf._busy = false;
+      leaf._a = toFlipped ? 180 : 0;
+      leaf.style.zIndex = baseZ(i, toFlipped);
+      render(i);
+      return;
+    }
+    var heavy = i === 0 || i === N - 1;          // the kraft boards swing a bit slower
+    animate(i, toFlipped ? 180 : 0, (dur || TURN) * (heavy && !dur ? 1.15 : 1), ease || EASE_TURN, delay);
+  }
+
+  function applyFlipped(target) {
     target = Math.max(0, Math.min(N, target));
     var from = flipped;
     if (target === from) { update(); return; }
-    var MAXA = 5;
+    var MAXA = 5;                                  // long jumps: riffle the last few
     if (Math.abs(target - from) > MAXA) {
       var mid = target > from ? target - MAXA : target + MAXA;
-      for (var q = 0; q < N; q++) if (!leaves[q]._busy) setLeaf(q, q < mid, true);
+      for (var q = 0; q < N; q++) if (!leaves[q]._busy || (q < mid) !== leaves[q]._f) setLeaf(q, q < mid, true);
       from = mid;
       flipped = mid;
       refresh();
     }
     var steps = Math.abs(target - from);
-    var dur = steps > 1 ? Math.max(380, DUR - steps * 40) : DUR;
-    var gap = steps > 1 ? Math.max(18, 110 - steps * 4) : 0;
+    var dur = steps > 1 ? (REDUCED ? 140 : 560) : TURN;
+    var gap = steps > 1 ? (REDUCED ? 30 : 85) : 0;
     var k = 0;
-    if (target > from) {
-      for (var i = from; i < target; i++) (function (i, k) {
-        setTimeout(function () { setLeaf(i, true, false, dur); }, k * gap);
-      })(i, k++);
-    } else {
-      for (var j = from - 1; j >= target; j--) (function (j, k) {
-        setTimeout(function () { setLeaf(j, false, false, dur); }, k * gap);
-      })(j, k++);
+    if (target > from) for (var i = from; i < target; i++) setLeaf(i, true, false, steps > 1 ? dur : 0, k++ * gap);
+    else for (var j = from - 1; j >= target; j--) setLeaf(j, false, false, steps > 1 ? dur : 0, k++ * gap);
+    // leaves still flying from an earlier, interrupted turn: send them home
+    var lo = Math.min(from, target), hi = Math.max(from, target);
+    for (var z = 0; z < N; z++) {
+      if (z >= lo && z < hi) continue;
+      if (leaves[z]._f !== (z < target) || (leaves[z]._busy && !leaves[z]._peek)) setLeaf(z, z < target, false, 320, 0, EASE_OUT);
     }
     flipped = target;
+    panDur = steps > 1 ? dur + gap * (steps - 1) : TURN;
     refresh();
     update();
+  }
+
+  // desktop: the page corner lifts a little under the mouse, inviting a turn
+  var peeked = -1;
+  function peek(i) {
+    if (peeked === i) return;
+    if (peeked >= 0) {
+      var p = leaves[peeked];
+      if (p._peek && !p._drag) { p._peek = false; animate(peeked, p._f ? 180 : 0, 260, EASE_OUT); }
+    }
+    peeked = i;
+    if (i >= 0) {
+      var lf = leaves[i];
+      if (lf._busy || lf._drag) { peeked = -1; return; }
+      lf._peek = true;
+      animate(i, lf._f ? 170 : 10, 300, EASE_OUT);
+    }
   }
 
   /* ---------- what is visible ---------- */
@@ -289,7 +360,9 @@
     var tx;
     if (single) tx = side === 'R' ? -W : 0;
     else tx = flipped === 0 ? -W / 2 : flipped === N ? W / 2 : 0;
+    book.style.transition = panDur ? 'transform ' + panDur + 'ms cubic-bezier(.45,.02,.18,1)' : 'none';
     book.style.transform = 'translateX(' + tx + 'px)';
+    panDur = 480;
 
     var txt, ab;
     if (single) {
@@ -301,8 +374,7 @@
       var a1 = L ? aboutFor(flipped, 'L') : '', a2 = R ? aboutFor(flipped, 'R') : '';
       ab = a1 && a2 && a1 !== a2 ? a1 + '  ·  ' + a2 : (a1 || a2);
     }
-    label.textContent = txt;
-    about.textContent = ab || '';
+    caption(txt, ab || '');
     btnPrev.disabled = flipped === 0 && (!single || side === 'R');
     btnNext.disabled = flipped === N && (!single || side === 'L');
 
@@ -316,6 +388,18 @@
     var hash = hashFor();
     if (location.hash !== hash) history.replaceState(null, '', hash);
     syncJump();
+  }
+
+  var capT = 0;
+  function caption(txt, ab) {
+    if (label.textContent === txt && about.textContent === ab) return;
+    if (!label.textContent) { label.textContent = txt; about.textContent = ab; return; }
+    label.parentNode.classList.add('swap');
+    clearTimeout(capT);
+    capT = setTimeout(function () {
+      label.textContent = txt; about.textContent = ab;
+      label.parentNode.classList.remove('swap');
+    }, 150);
   }
 
   /* ---------- navigation ---------- */
@@ -353,6 +437,7 @@
       flipped = loc.f;
       for (var i = 0; i < N; i++) setLeaf(i, i < flipped, true);
       refresh();
+      panDur = 0;
       update();
     } else applyFlipped(loc.f);
     if (instant || loc.f === flipped) update();
@@ -403,78 +488,102 @@
       if (flipped === 0) side = 'R';
       else if (flipped === N) side = 'L';
     }
+    panDur = 0;
     update();
   }
 
-  /* ---------- pointer: tap and drag ---------- */
+  /* ---------- pointer: tap, drag, hover ---------- */
   var drag = null;
+  function bookX(clientX) {                 // pointer x in book coordinates
+    var r = book.getBoundingClientRect();
+    return (clientX - r.left) / scale;
+  }
   function pointerDown(e) {
     if (e.button !== undefined && e.button !== 0) return;
-    drag = { x0: e.clientX, y0: e.clientY, t0: performance.now(), moved: false, leaf: -1, dir: 0, p: 0 };
+    if (e.target.closest && e.target.closest('button,select,a')) return;
+    drag = { x0: e.clientX, y0: e.clientY, moved: false, leaf: -1, dir: 0, off: 0,
+             hist: [[performance.now(), e.clientX]] };
   }
   function pointerMove(e) {
-    if (!drag) return;
+    if (!drag) {
+      if (e.pointerType === 'mouse' && !single) hover(e);
+      return;
+    }
     var dx = e.clientX - drag.x0, dy = e.clientY - drag.y0;
+    drag.hist.push([performance.now(), e.clientX]);
+    if (drag.hist.length > 6) drag.hist.shift();
     if (!drag.moved) {
-      if (Math.abs(dx) < 10 || Math.abs(dx) < Math.abs(dy)) return;
+      if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy) * 1.1) return;
       drag.moved = true;
       drag.dir = dx < 0 ? 1 : -1;
-      // which leaf would turn?
-      if (drag.dir > 0) {
-        if (!(single && side === 'L') && flipped < N) drag.leaf = flipped;
-      } else {
-        if (!(single && side === 'R') && flipped > 0) drag.leaf = flipped - 1;
-      }
+      if (drag.dir > 0) { if (!(single && side === 'L') && flipped < N) drag.leaf = flipped; }
+      else if (!(single && side === 'R') && flipped > 0) drag.leaf = flipped - 1;
       if (drag.leaf >= 0) {
         var lf = leaves[drag.leaf];
-        lf._drag = true;
-        lf.style.transition = 'none';
+        delete anims[drag.leaf];
+        lf._drag = true; lf._busy = false; lf._peek = false; peeked = -1;
         lf.style.zIndex = 3000;
-        lf.classList.add('dragging');
         lf.classList.remove('off');
         var under = drag.dir > 0 ? drag.leaf + 1 : drag.leaf - 1;
         if (leaves[under]) leaves[under].classList.remove('off');
+        // keep the page edge where it is under the finger, no jump on pickup
+        var edge = W + W * Math.cos(lf._a * Math.PI / 180);
+        drag.off = edge - bookX(drag.x0);
       }
       try { stage.setPointerCapture(e.pointerId); } catch (_) {}
     }
     if (drag.leaf < 0) return;
-    var span = W * scale * (single ? 1.1 : 1.6);
-    var p = Math.max(0, Math.min(1, drag.dir * -dx / span));
-    drag.p = p;
-    var angle = drag.dir > 0 ? -180 * p : -180 * (1 - p);
+    // the page's free edge follows the finger: edge x = W + W·cos(a)
+    var c = Math.max(-1, Math.min(1, (bookX(e.clientX) + drag.off - W) / W));
     var lf2 = leaves[drag.leaf];
-    lf2.style.transform = transformFor(angle);
-    showBack(lf2, angle < -90);
-    lf2.style.setProperty('--p', Math.sin(p * Math.PI).toFixed(3));
+    lf2._a = Math.acos(c) * 180 / Math.PI;
+    render(drag.leaf);
+    shadows();
     e.preventDefault();
   }
   function pointerUp(e) {
     if (!drag) return;
     var d = drag; drag = null;
     if (!d.moved) { tap(e); return; }
-    var dt = performance.now() - d.t0;
-    var v = Math.abs(e.clientX - d.x0) / Math.max(1, dt);
-    var commit = d.p > 0.3 || (v > 0.45 && d.p > 0.06);
-    if (d.leaf < 0) {                       // single-page pan, no leaf turns
-      if (d.dir > 0) next(); else prev();
-      return;
+    if (d.leaf < 0) { if (d.dir > 0) next(); else prev(); return; }
+    var h = d.hist, v = 0;
+    if (h.length > 1) v = (h[h.length - 1][1] - h[0][1]) / Math.max(1, h[h.length - 1][0] - h[0][0]);
+    var lf = leaves[d.leaf], a = lf._a;
+    var progress = d.dir > 0 ? a / 180 : (180 - a) / 180;
+    var flick = d.dir > 0 ? v < -0.35 : v > 0.35;
+    var back = d.dir > 0 ? v > 0.35 : v < -0.35;
+    var commit = !back && (flick || progress > (single ? 0.28 : 0.42));
+    lf._drag = false;
+    var toFlipped = d.dir > 0 ? commit : !commit;
+    var remain = Math.abs((toFlipped ? 180 : 0) - a) / 180;
+    var dur = Math.max(200, Math.min(640, remain * (flick ? 520 : 720)));
+    if (commit) {
+      flipped = d.dir > 0 ? d.leaf + 1 : d.leaf;
+      side = d.dir > 0 ? 'L' : 'R';
+      panDur = dur;
     }
-    var lf = leaves[d.leaf];
-    lf.classList.remove('dragging');
-    lf.style.removeProperty('--p');
-    var remaining = Math.round(DUR * 0.7 * (commit ? 1 - d.p : d.p)) + 120;
-    if (d.dir > 0) {
-      if (commit) { flipped = d.leaf + 1; side = 'L'; setLeaf(d.leaf, true, false, remaining); }
-      else setLeaf(d.leaf, false, false, remaining);
-    } else {
-      if (commit) { flipped = d.leaf; side = 'R'; setLeaf(d.leaf, false, false, remaining); }
-      else setLeaf(d.leaf, true, false, remaining);
-    }
+    setLeaf(d.leaf, toFlipped, false, dur, 0, EASE_OUT);
     refresh();
     update();
   }
+  function cancelDrag() {
+    if (drag && drag.leaf >= 0) {
+      var l = leaves[drag.leaf];
+      l._drag = false;
+      setLeaf(drag.leaf, l._f, false, 300, 0, EASE_OUT);
+    }
+    drag = null;
+  }
+  function hover(e) {
+    var x = bookX(e.clientX), r = book.getBoundingClientRect();
+    var y = (e.clientY - r.top) / scale;
+    var inY = y > 0 && y < H;
+    var target = -1;
+    if (inY && flipped < N && x > 2 * W - 46 && x < 2 * W + 8) target = flipped;
+    else if (inY && flipped > 0 && x < 46 && x > -8) target = flipped - 1;
+    peek(target);
+  }
   function tap(e) {
-    if (e.target.closest && e.target.closest('button,select,a')) return;
     var r = stage.getBoundingClientRect();
     if (e.clientX - r.left > r.width / 2) next(); else prev();
   }
@@ -488,10 +597,8 @@
   stage.addEventListener('pointerdown', pointerDown);
   stage.addEventListener('pointermove', pointerMove, { passive: false });
   stage.addEventListener('pointerup', pointerUp);
-  stage.addEventListener('pointercancel', function () {
-    if (drag && drag.leaf >= 0) { var l = leaves[drag.leaf]; l.classList.remove('dragging'); setLeaf(drag.leaf, l._f, false, 300); }
-    drag = null;
-  });
+  stage.addEventListener('pointercancel', cancelDrag);
+  stage.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse' && !drag) peek(-1); });
   document.addEventListener('keydown', function (e) {
     if (e.target.tagName === 'SELECT') return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
