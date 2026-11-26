@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#e9e6dc">
+<meta name="description" content="Pocket OS — a paper operating system for an A6 notebook. The first 30 days, as a single card.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<title>Pocket OS · First 30 Days</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Coloured e-ink palette (Kaleido-style: muted, low-saturation) ---------- */
+  :root {
+    --paper: #e9e6dc;
+    --paper-2: #e2ded2;
+    --ink: #2b2a27;
+    --ink-soft: #5d5a53;
+    --rule: #b9b4a7;
+
+    --red:    #a8584a;
+    --blue:   #4f6b8a;
+    --teal:   #4c7a72;
+    --ochre:  #b08a3e;
+    --green:  #6a7d4a;
+    --plum:   #7d5a78;
+
+    --sans: "Google Sans", "Product Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: "Google Sans Code", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; background: var(--paper); }
+
+  body {
+    margin: 0;
+    color: var(--ink);
+    font: 400 16px/1.5 var(--sans);
+    background-color: var(--paper);
+    /* paper: soft blotchy tone + fine grain */
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .17  0 0 0 0 .16  0 0 0 0 .14  0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><filter id='b'><feTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .40  0 0 0 0 .30  0 0 0 .10 0'/></filter><rect width='100%' height='100%' filter='url(%23b)'/></svg>");
+    padding: 22px 16px 56px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  main { max-width: 680px; margin: 0 auto; }
+
+  /* ---------- Header: like an e-reader title bar ---------- */
+  header {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 12px 0 14px;
+    margin-bottom: 18px;
+  }
+  .eyebrow {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-soft); margin-bottom: 10px;
+  }
+  h1 { font-weight: 700; font-size: 1.75rem; line-height: 1.1; margin: 0 0 6px; letter-spacing: -.015em; }
+  .sub { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+  .motto {
+    margin: 14px 0 0; padding: 10px 12px;
+    border: 1.5px solid var(--ink); border-left: 8px solid var(--red);
+    font-weight: 600; font-size: 1.02rem;
+  }
+
+  /* ---------- Cards ---------- */
+  .cards { display: block; }
+  .col { min-width: 0; }
+  section {
+    --c: var(--ink);
+    break-inside: avoid;
+    border: 1.5px solid var(--ink);
+    padding: 0 14px 12px;
+    margin: 0 0 14px;
+    background: rgba(255,255,255,.08);
+  }
+  h2 {
+    display: flex; align-items: center; gap: 8px;
+    margin: 0 -14px 10px; padding: 6px 14px;
+    border-bottom: 1.5px solid var(--ink);
+    font: 700 12px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase;
+  }
+  h2::before {
+    content: ""; width: 12px; height: 12px; flex: none;
+    background: var(--c); border: 1.5px solid var(--ink);
+  }
+  h2 .tag {
+    margin-left: auto; font: 600 10px/1 var(--mono); letter-spacing: .06em;
+    padding: 3px 6px; border: 1.5px solid var(--c); color: var(--c);
+  }
+
+  .c-red   { --c: var(--red); }
+  .c-blue  { --c: var(--blue); }
+  .c-teal  { --c: var(--teal); }
+  .c-ochre { --c: var(--ochre); }
+  .c-green { --c: var(--green); }
+  .c-plum  { --c: var(--plum); }
+
+  p { margin: 0; }
+  ol, ul { margin: 0; padding-left: 1.3em; }
+  li { margin: 4px 0; }
+  li::marker { color: var(--c); font-weight: 700; }
+  b, strong { font-weight: 700; }
+
+  code {
+    font: 500 .86em var(--mono);
+    padding: 0 4px; border-bottom: 1.5px solid var(--c);
+  }
+  pre {
+    margin: 10px 0 0; padding: 9px 11px;
+    font: 400 .82rem/1.5 var(--mono);
+    border: 1px dashed var(--rule);
+    background: rgba(0,0,0,.025);
+    overflow-x: auto; white-space: pre-wrap; word-break: break-word;
+  }
+  .note { margin-top: 8px; color: var(--ink-soft); font-size: .88rem; }
+
+  /* marks table */
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 4px 0; vertical-align: top; border-bottom: 1px dotted var(--rule); }
+  tr:last-child td { border-bottom: 0; }
+  td.k {
+    width: 2.4em; font: 700 1.15em/1.2 var(--mono); color: var(--c);
+  }
+
+  /* modes */
+  .mode { display: grid; grid-template-columns: 5.2em 1fr; gap: 8px; padding: 5px 0; border-bottom: 1px dotted var(--rule); }
+  .mode:last-of-type { border-bottom: 0; }
+  .mode b { color: var(--c); }
+
+  /* checklists */
+  ul.checks, ul.dont { list-style: none; padding-left: 0; }
+  ul.checks li, ul.dont li { position: relative; padding-left: 1.6em; }
+  ul.checks li::before {
+    content: ""; position: absolute; left: 0; top: .28em;
+    width: .9em; height: .9em; border: 1.5px solid var(--ink);
+  }
+  ul.dont li::before {
+    content: "×"; position: absolute; left: .1em; top: -.08em;
+    font: 700 1.15em var(--mono); color: var(--c);
+  }
+
+  footer {
+    margin-top: 18px; padding-top: 10px; border-top: 1px solid var(--ink);
+    display: flex; justify-content: space-between;
+    font: 500 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft);
+  }
+
+  /* ---------- Wider screens: two columns like a folded card ---------- */
+  @media (min-width: 900px) {
+    main { max-width: 1040px; }
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; align-items: start; }
+  }
+
+  /* ---------- Print: one A4 sheet, two columns, colours kept ---------- */
+  @page { size: A4; margin: 9mm; }
+  @media print {
+    html, body { background: #fff !important; }
+    body {
+      background-image: none !important;
+      padding: 0; font-size: 8.3pt; line-height: 1.3;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    main { max-width: none; }
+    header { padding: 6px 0 8px; margin-bottom: 8px; }
+    h1 { font-size: 16pt; }
+    .motto { margin-top: 7px; padding: 5px 9px; font-size: 9pt; }
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0 5mm; align-items: start; }
+    section { margin-bottom: 6px; padding: 0 9px 6px; background: none; }
+    h2 { margin: 0 -9px 6px; padding: 4px 9px; font-size: 7.5pt; }
+    pre { font-size: 7.4pt; padding: 5px 7px; margin-top: 6px; }
+    li { margin: 2px 0; }
+    td { padding: 2px 0; }
+    .note { font-size: 7.8pt; margin-top: 5px; }
+    footer, .site-nav { display: none; }
+  }
+  /* ---------- Site nav: the two pages of Pocket OS ---------- */
+  .site-nav {
+    display: flex; align-items: baseline; justify-content: space-between;
+    flex-wrap: wrap; gap: 6px 16px;
+    padding-bottom: 10px;
+    font: 600 11px/1 var(--mono); letter-spacing: .09em; text-transform: uppercase;
+  }
+  .site-nav .brand { color: var(--ink); text-decoration: none; }
+  .site-nav .brand b { color: var(--red); }
+  .site-nav .links { display: flex; gap: 16px; }
+  .site-nav .links a {
+    color: var(--ink-soft); text-decoration: none;
+    padding-bottom: 3px; border-bottom: 1.5px solid transparent;
+  }
+  .site-nav .links a:hover { color: var(--ink); border-bottom-color: var(--rule); }
+  .site-nav .links a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
+
+  /* prev / next between the two pages */
+  footer a { text-decoration: none; border-bottom: 1.5px solid var(--rule); padding-bottom: 2px; }
+  footer a:hover { border-bottom-color: var(--ink); }
+
+  a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: var(--ink); }
+</style>
+</head>
+<body>
+<main>
+
+<nav class="site-nav" aria-label="Pocket OS">
+  <a class="brand" href="index.html">Pocket <b>OS</b></a>
+  <div class="links">
+    <a href="index.html">Notebook setup</a>
+    <a href="30-day.html" aria-current="page">First 30 days</a>
+  </div>
+</nav>
+
+<header>
+  <div class="eyebrow"><span>Pocket OS · v3</span><span>Sheet 02 / 02</span></div>
+  <h1>First 30 Days</h1>
+  <p class="sub">The minimum version. The full constitution is a manual to look things up in, not a set of rules to follow daily.</p>
+  <p class="motto">Open the notebook. Write one physical step. Start it.</p>
+</header>
+
+<div class="cards">
+<div class="col">
+<section class="c-red">
+  <h2>Every day</h2>
+  <ol>
+    <li><b>Date</b> at the next blank line. Never backfill missed days.</li>
+    <li><b>RECONNECT</b>: glance at the week + calendar. Anything urgent?</li>
+    <li><b>FIRST:</b> one physical action. Do it for 5 min, then continue, change approach or stop.</li>
+    <li><b>Log transitions</b> that matter, not every minute.</li>
+    <li><b>Stopping?</b> Leave a <code>NEXT:</code> line. That's the whole shutdown.</li>
+  </ol>
+<pre>THU 26 NOV
+○ 14:00 Sync (CAL)
+FIRST: open analysis notebook; run baseline
+11:15 – Baseline reproduced
+NEXT: check segment B @36</pre>
+</section>
+
+<section class="c-blue">
+  <h2>Marks you need</h2>
+  <table>
+    <tr><td class="k">•</td><td>Open action. Verb + visible result.</td></tr>
+    <tr><td class="k">×</td><td>Done (write over the bullet)</td></tr>
+    <tr><td class="k">&gt;</td><td>Moved to a project page: <code>&gt; @42</code></td></tr>
+    <tr><td class="k">&lt;</td><td>Deferred: <code>&lt; CAL</code> or <code>&lt; LATER</code></td></tr>
+    <tr><td class="k">○</td><td>Event (the calendar owns it; this is just a reference)</td></tr>
+    <tr><td class="k">–</td><td>Note, observation, decision</td></tr>
+    <tr><td class="k">!</td><td>Insight worth coming back to</td></tr>
+    <tr><td class="k"><s>•</s></td><td>Struck through = cancelled</td></tr>
+  </table>
+  <p class="note">Optional: <code>=</code> feeling. Not needed yet: <code>₹</code> spend, <code>*</code> priority. A plain sentence is always fine.</p>
+</section>
+
+<section class="c-ochre">
+  <h2>Interrupted? Park &amp; Pivot</h2>
+  <p>One line: where you were + what to do on return.</p>
+<pre>PAUSE GPU @42: timeout fails; check cleanup
+  → dashboard bug</pre>
+  <p class="note">If it's urgent, handle it first and write the line afterwards.</p>
+</section>
+
+<section class="c-green">
+  <h2>Capacity modes</h2>
+  <div class="mode"><b>Full</b><span>All of the above.</span></div>
+  <div class="mode"><b>Light</b><span>Protect commitments, FIRST:, NEXT:.</span></div>
+  <div class="mode"><b>Survival</b><span>One necessary action. Protect anything time-bound. Nothing else.</span></div>
+  <p class="note">Switch freely. No need to label the day.</p>
+</section>
+
+<section class="c-plum">
+  <h2>Fell off? Zero-debt reset</h2>
+<pre>[today] — RESET
+Right now: • ________
+FIRST: ______________</pre>
+  <p class="note">Start that now. Later: check calendar + work tools for anything urgent, then scan from the last review boundary. Never fill in empty days.</p>
+</section>
+</div>
+<div class="col">
+<section class="c-teal">
+  <h2>Projects (keep it simple)</h2>
+  <ul>
+    <li>Only for outcomes that need several sessions.</li>
+    <li><b>One page per project:</b> outcome, open bullets, a <code>NEXT:</code> line.</li>
+    <li>Indent subtasks. No branches or checkpoints until a page is physically full.</li>
+    <li>Addresses are <b>page numbers only</b> (<code>@42</code>).</li>
+    <li>Front index page: <code>GPU → 42</code>. That's the directory.</li>
+  </ul>
+<pre>42   CUDA Playground [GPU]
+Outcome: run CUDA from mobile browser
+× Set up Modal
+• Execution backend
+    • Capture stderr
+• Mobile editor
+NEXT: capture stderr</pre>
+</section>
+
+<section class="c-red">
+  <h2>Weekly review · 15 min <span class="tag">ALARM</span></h2>
+  <ol>
+    <li><b>Rescue:</b> scan this week's pages for open <code>•</code>. Move, do, defer or strike each.</li>
+    <li><b>Projects:</b> does each one have a <code>NEXT:</code>? Park any you won't touch.</li>
+    <li><b>New week:</b> 1–2 lead outcomes + a few real tasks on a small spread.</li>
+  </ol>
+  <p class="note">Low energy? Do step 1 for urgent items only, then pick one lead. Write <code>Reviewed through @38</code> so you know where to restart.</p>
+</section>
+
+<section class="c-blue">
+  <h2>Set up once, today</h2>
+  <ul class="checks">
+    <li>Daily calendar alarm: <b>"Open notebook → FIRST:"</b></li>
+    <li>Weekly calendar alarm: <b>"Weekly review (15 min)"</b></li>
+    <li>Notebook lives where the next transition happens: beside the laptop, or with your keys.</li>
+    <li>Clip on today's page.</li>
+  </ul>
+</section>
+
+<section class="c-red">
+  <h2>For 30 days, don't</h2>
+  <ul class="dont">
+    <li>Edit the constitution. Write <code>– FRICTION: …</code> in the notebook instead.</li>
+    <li>Add apps, trackers, habit rows or sync pipelines.</li>
+    <li>Start lifestyle or spending experiments. Protect the core habits while the novelty wears off (weeks 3–4).</li>
+    <li>Rewrite a page to make it neater.</li>
+  </ul>
+</section>
+
+<section class="c-green">
+  <h2>Day 30 check</h2>
+  <ul class="checks">
+    <li>Did I open the notebook on most days?</li>
+    <li>Does opening it make starting easier?</li>
+    <li>Can I resume a project without rereading days of logs?</li>
+    <li>Did anything important get missed?</li>
+    <li>What came up as <code>FRICTION</code> more than once? Fix only that.</li>
+  </ul>
+</section>
+</div>
+</div>
+
+<footer><a href="index.html">← Previous · Notebook setup</a><span>Simplify before adding</span></footer>
+
+</main>
+</body>
+</html>
