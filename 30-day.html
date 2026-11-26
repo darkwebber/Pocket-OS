@@ -5,8 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#e9e6dc">
 <meta name="description" content="Pocket OS — a paper operating system for an A6 notebook. The first 30 days, as a single card.">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Pocket OS">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Pocket OS · First 30 Days</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -179,7 +185,7 @@
     li { margin: 2px 0; }
     td { padding: 2px 0; }
     .note { font-size: 7.8pt; margin-top: 5px; }
-    footer, .site-nav { display: none; }
+    footer { display: none; }
   }
   /* ---------- Site nav: the two pages of Pocket OS ---------- */
   .site-nav {
@@ -204,6 +210,7 @@
 
   a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 3px; }
   a:hover { text-decoration-color: var(--ink); }
+  @media print { .site-nav { display: none; } }
 </style>
 </head>
 <body>
@@ -314,7 +321,7 @@ NEXT: capture stderr</pre>
   <h2>Set up once, today</h2>
   <ul class="checks">
     <li>Daily calendar alarm: <b>"Open notebook → FIRST:"</b></li>
-    <li>Weekly calendar alarm: <b>"Weekly review (15 min)"</b></li>
+    <li>Weekly calendar alarm: <b>"Weekly review · 15 min"</b></li>
     <li>Notebook lives where the next transition happens: beside the laptop, or with your keys.</li>
     <li>Clip on today's page.</li>
   </ul>

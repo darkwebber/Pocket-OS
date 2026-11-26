@@ -5,8 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#e9e6dc">
 <meta name="description" content="Pocket OS — a paper operating system for an A6 notebook. Set up the notebook in 15 minutes.">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Pocket OS">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Pocket OS · Notebook Setup</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -179,7 +185,7 @@
     li { margin: 2px 0; }
     td { padding: 2px 0; }
     .note { font-size: 7.8pt; margin-top: 5px; }
-    footer, .site-nav { display: none; }
+    footer { display: none; }
   }
 
   /* ---------- Site nav: the two pages of Pocket OS ---------- */
@@ -205,6 +211,7 @@
 
   a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 3px; }
   a:hover { text-decoration-color: var(--ink); }
+  @media print { .site-nav { display: none; } }
   h2 i { font-style: normal; font: 700 11px/1 var(--mono); display:inline-grid; place-items:center;
          width: 18px; height: 18px; border: 1.5px solid var(--ink); background: var(--c); color: var(--paper); margin-left: -4px; }
   h2:has(i)::before { display: none; }
@@ -218,7 +225,6 @@
   .pg.flow { border: 0; flex: 0 0 auto; color: var(--teal); justify-content: center; }
   .pg.flow.back { color: var(--plum); }
   .pg.gap { flex: .8 1 0; border: 1.5px dashed var(--rule); }
-  .cards + section, .cards ~ section { }
   .two { display: grid; grid-template-columns: 1fr; gap: 0 6px; }
   @media (min-width: 481px) { .two { grid-template-columns: auto 1fr; } }
   @media (max-width: 480px) {

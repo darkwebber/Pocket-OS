@@ -29,11 +29,14 @@ python3 -m http.server 8000
 index.html    Notebook setup (site root)
 30-day.html   First 30 days
 favicon.svg   Notebook mark used as the site icon
+manifest.webmanifest  Web app manifest (Add to Home Screen / install)
+icons/        PNG icons for iOS, Android and older browsers
+              (icon.svg / icon-maskable.svg are their sources)
 .nojekyll     Serve files as-is, no Jekyll build
 ```
 
 No build step, no dependencies, no JavaScript. The only external request is Google Fonts;
-everything else (paper texture, icons) is inline.
+everything else (paper texture, icons) is local.
 
 ## Deploying
 
