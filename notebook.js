@@ -157,6 +157,30 @@
     }
   }
 
+  /* Show exactly one face per leaf. backface-visibility alone is not enough on
+     WebKit (all iOS browsers): transformed children of a hidden back face still
+     paint, so the turned page showed through mirrored.                       */
+  function showBack(leaf, on) { if (leaf._sb !== on) { leaf._sb = on; leaf.classList.toggle('sb', on); } }
+  function angleOf(leaf) {
+    var m = getComputedStyle(leaf).transform;
+    if (!m || m === 'none') return 0;
+    var v = m.slice(m.indexOf('(') + 1, -1).split(',');
+    return +v[0];                       // m11 = cos(angle); < 0 once past 90°
+  }
+  function track(leaf) {
+    if (leaf._raf) return;
+    var step = function () {
+      if (leaf._busy) {
+        showBack(leaf, angleOf(leaf) < 0);
+        leaf._raf = requestAnimationFrame(step);
+      } else {
+        leaf._raf = 0;
+        showBack(leaf, leaf._f);
+      }
+    };
+    leaf._raf = requestAnimationFrame(step);
+  }
+
   function baseZ(i, isFlipped) { return isFlipped ? 10 + i : 10 + N - i; }
   function transformFor(angle) { return 'perspective(2600px) rotateY(' + angle + 'deg)'; }
 
@@ -170,6 +194,7 @@
       leaf.style.transition = 'none';
       leaf.style.transform = transformFor(toFlipped ? -180 : 0);
       leaf.style.zIndex = baseZ(i, toFlipped);
+      showBack(leaf, toFlipped);
       leaf.offsetWidth; // flush
       leaf.style.transition = '';
       return;
@@ -185,11 +210,13 @@
     leaf.style.setProperty('--dur', d + 'ms');
     leaf.classList.add('turning');
     leaf.style.transform = transformFor(toFlipped ? -180 : 0);
+    track(leaf);
     clearTimeout(leaf._t);
     leaf._t = setTimeout(function () {
       leaf.classList.remove('turning');
       leaf.style.zIndex = baseZ(i, leaf._f);
       leaf._busy = false;
+      showBack(leaf, leaf._f);
       refresh();
     }, d + 30);
   }
@@ -417,6 +444,7 @@
     var angle = drag.dir > 0 ? -180 * p : -180 * (1 - p);
     var lf2 = leaves[drag.leaf];
     lf2.style.transform = transformFor(angle);
+    showBack(lf2, angle < -90);
     lf2.style.setProperty('--p', Math.sin(p * Math.PI).toFixed(3));
     e.preventDefault();
   }

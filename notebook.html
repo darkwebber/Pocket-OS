@@ -113,6 +113,9 @@
     backface-visibility: hidden; -webkit-backface-visibility: hidden;
   }
   .face.back { transform: rotateY(180deg); }
+  /* one face at a time (see showBack in notebook.js) */
+  .leaf .face.back, .leaf.sb .face.front { visibility: hidden; }
+  .leaf.sb .face.back { visibility: visible; }
 
   /* light falling on a turning page */
   .shade { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
