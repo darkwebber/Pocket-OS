@@ -393,7 +393,7 @@ FIRST: segment B — check the join
 ## THU 1 OCT
 RECONNECT: dinner 19:00 (cal)
 FIRST: report outline @7
-09:30 × outline
+09:30 – outline done → × @7
 10:15 – PAUSE ANL @7: charts next;
   start with retention curve
   → ADHOC: help teammate w/ query
@@ -450,14 +450,14 @@ Continued @42 →`);
 
 ## SAT 3 OCT
 FIRST: make Modal account @10
-10:20 × account + GPU fn → × @10
-11:00 × hello-world kernel runs
-  remotely!! (@10)
+10:20 – account + GPU fn → × @10
+11:00 – hello-world kernel runs
+  remotely!! → × @10
   = excited — careful, don't
     redesign the whole thing
-12:00 × Groceries
+12:00 – groceries → × @5
 13:00 ₹620 delivery lunch; tired
-16:00 × Laundry
+16:00 – laundry → × @5
 – review tomorrow (alarm set)
 NEXT: Sunday — weekly review`);
 
@@ -611,7 +611,7 @@ OUTCOME MET 24 Oct → × on @10
 
   P(18, 'p18 · Pending update ("• Mark done @17") when the owner page can\'t be updated right away (Art 5.2)', `
 ## TUE 6 OCT cont.
-20:15 × API endpoint → × @17
+20:15 – API endpoint works → × @17
 20:40 – stderr merged into stdout?
 21:00 PAUSE GPU @17: split stderr;
   try subprocess pipes
@@ -619,12 +619,12 @@ OUTCOME MET 24 Oct → × on @10
 
 ## WED 7 OCT
 FIRST: reason-code mapping (wk)
-10:00 × mapping
+10:00 – mapping done → × @7
 11:20 – teammate: "can you also…"
   → after Fri 16. asked in sync.
 14:30 = irritated in meeting.
   wrote it here. moved on.
-15:00 × Pay credit card
+15:00 – credit card paid → × @15
 16:00 – 3 tabs → closed 2
 18:00 NEXT: chart review prep
 21:00 GPU: nvcc in container works
@@ -814,7 +814,7 @@ FIRST: explain PCA from memory
   @SB:PCA Intuition — gap filled
 14:00 ₹1,900 phone stand — right
   after a review video. again.
-× Groceries   × Laundry
+– groceries + laundry → × @23
 NEXT: weekly review (full)`);
 
   P(27, 'p27 · Full weekly review; the twice-migrated dentist gets a clearer first step (Art 13.1, 5.3)', `
@@ -940,13 +940,14 @@ EXPERIMENT wk 2 (dishes)
   P(32, 'p32 · Strike-through = cancelled (wrong approach), replacement written next to it (Art 6.3)', `
 ## MON 19 OCT
 FIRST: call dentist 10:00 (CAL)
-10:05 × booked Thu 11:30 → CAL
+10:05 – booked Thu 11:30 → CAL;
+  call row × @31
 10:20 – that took 4 minutes.
 FIRST (work): reason-code cut
 11:30 – PAUSE ANL @7: join codes
   → ADHOC: reviewer Q on report
 12:00 RESUME: join codes
-16:00 × codes joined
+16:00 – codes joined → × @7
 19:30 GPU: timeout via signal
 21:10 – signal: children survive
   → struck on @17; new • there:
@@ -955,7 +956,7 @@ NEXT: pgroup kill (notes @S6)
 
 ## TUE 20 OCT
 FIRST: pgroup kill test
-08:30 × works locally (@S6)
+08:30 – works locally (@S6)
 ○ 11:00 sync
 11:40 – DECISION GPU: no queue yet
   → @17
@@ -966,10 +967,10 @@ FIRST: pgroup kill test
   P(33, 'p33 · FRICTION lines collect evidence for later changes, instead of redesigning now (Art 17.3)', `
 ## WED 21 OCT
 FIRST: deploy timeout to Modal
-09:00 × deployed; test passes
+09:00 – deployed; passes → × @17
 10:00 – work: reason-code cut 60%
 13:00 ₹420 lunch out w/ team
-15:30 × Renew domain
+15:30 – domain renewed → × @31
 21:00 – dishes (exp.)
 – FRICTION: busy days spill over
   2 pages. fine? → just watch.
@@ -979,25 +980,26 @@ NEXT: resource limits @17
 ○ 11:30 dentist — filling done;
   follow-up Thu 5 Nov → CAL
 14:00 FIRST: resource limits @17
-15:30 × mem limit; GPU = 1
+15:30 – mem limit; GPU = 1 → × @17
 – reason-code cut 90%
 
 ## FRI 23 OCT
 FIRST: basic tests @17
-11:00 × 4 tests pass
-12:00 × reason-code cut → tracker
+11:00 – 4 tests pass → × @17
+12:00 – reason-code cut → tracker
+  + × @7
 17:30 NEXT: backend outcome? check`);
 
   P(34, 'p34 · Closing a branch: child outcome met → parent marked done on both pages (Art 7.1)', `
 ## SAT 24 OCT
 FIRST: check backend outcome @17
-10:30 × outcome met → × on @17,
+10:30 – outcome met → × on @17,
   × backend on @10. both updated.
-11:00 × monitor arm installed (HOME)
+11:00 – monitor arm in → × @21
 ₹2,400 monitor arm (planned)
 14:00 – GPU next: mobile editor.
   stays on @10 until it's big.
-16:00 × Groceries  × Laundry
+16:00 – groceries + laundry → × @31
 = good week. tired, but good.
 NEXT: review tomorrow
 
@@ -1143,7 +1145,7 @@ NOT changing: anything else.
 
   P(40, 'p40 · Missed days: no backfill. Zero-debt RESET, stage 1 — just start (Art 14.3)', `
 ## TUE 27 OCT cont.
-15:00 × tile mock v1 → tracker
+15:00 – tile mock v1 → tracker
 16:30 – leaving tomorrow early.
   NEXT (wk): tile v2 from feedback
   NEXT (GPU): editor ↔ backend
@@ -1182,7 +1184,7 @@ NEXT: tile v2
 
 ## TUE 3 NOV
 FIRST: tile v2
-11:00 × tile v2 → tracker
+11:00 – tile v2 → tracker
 12:00 – checkpoint GPU → @42
 
 
@@ -1311,7 +1313,7 @@ NEXT: show stderr nicely
 ○ 15:00 tile review
 16:00 – tile: 2 changes, then ship
   (tracker updated)
-16:30 × Reply uncle re: docs
+16:30 – replied to uncle → × @45
 NEXT: tile changes 1 + 2
 
 
@@ -1325,8 +1327,8 @@ NEXT: tile changes 1 + 2
   P(47, 'p47 · A buy noted without judgement; PAUSE line mid-bug (Art 12.3, 9.3)', `
 ## FRI 6 NOV
 FIRST: tile change 1
-11:00 × change 1   × change 2
-14:00 × tile shipped. W45 lead ×
+11:00 – tile changes 1 + 2 done
+14:00 – tile shipped. W45 lead met.
 15:00 ₹1,250 Diwali clothes
   (planned)
 16:00 ₹2,300 earbuds "sale" — the
@@ -1338,9 +1340,9 @@ FIRST: tile change 1
 
 ## SAT 7 NOV
 FIRST: fix line offset @42
-10:00 × off-by-one fixed → × @42
-11:00 × Diwali shopping
-12:00 × Clean home
+10:00 – off-by-one fixed → × @42
+11:00 – Diwali shopping → × @45
+12:00 – home cleaned → × @45
 – reviews today (Sun = Diwali):
   weekly @48, monthly @49
 
@@ -1518,10 +1520,10 @@ EXPERIMENT 2 · 24 h rule → @51
 
 ## MON 9 NOV
 FIRST: open tracker; pick Q4 item
-09:30 × picked. my step: draft the
+09:30 – picked. my step: draft the
   metric definitions (tracker owns
   the rest)
-10:00 × Train tickets booked
+10:00 – train tickets → × @53
   ₹3,400 (planned, family)
 15:00 × metric defs draft
 19:30 GPU: e2e test plan @42
@@ -1587,10 +1589,10 @@ NEXT: test limiter with 2 phones
   P(57, 'p57 · Short Sunday review; the editor gets its own child page (Art 13.2, 7.1)', `
 ## SAT 14 NOV
 FIRST: test limiter with 2 phones
-11:00 × limiter ok → × @42
+11:00 – limiter ok → × @42
 12:00 ₹1,800 jacket — waited 24 h,
   still wanted it (@51)
-15:00 HOME: × lamp moved @21
+15:00 – HOME: lamp moved → × @21
 
 ## SUN 15 NOV · WEEKLY REVIEW
 1 RESCUE @54–57: library book
@@ -1663,11 +1665,11 @@ Themes: close loops. HOME done.
   P(60, 'p60 · Low energy, no project work — and no guilt line needed', `
 ## MON 16 NOV
 FIRST: Q4 follow-up #2: the query
-10:00 × Return library book
+10:00 – library book → × @59
 11:30 – PAUSE wk: query step 3
   → ADHOC: help new joiner set up
 12:20 RESUME step 3
-16:00 × query → tracker
+16:00 – query → tracker
 19:00 = low. no GPU tonight. fine.
 NEXT: GPU — list editor UX issues
 
@@ -1714,17 +1716,17 @@ Continued @4.7 →
   P(62, 'p62 · Decision logged where it matters, in one line', `
 ## TUE 17 NOV cont.
 ○ 11:00 sync
-12:00 × Pay rent
-20:00 × Big Run button (@61)
-21:00 × output on top — better
+12:00 – rent paid → × @59
+20:00 – Big Run button → × @61
+21:00 – output on top: better → × @61
 
 ## WED 18 NOV
 FIRST: parse nvcc line numbers @61
-09:00 × parse
+09:00 – parse done → × @61
 10:00 – wk: tracker items, no notes
   needed here
 – DECISION GPU: no accounts → @61
-20:00 HOME: × tray for book + pen
+20:00 – HOME: tray in → × @21
   → outcome met? check Thu morning
 NEXT: (wk) follow-up review
 
@@ -1750,7 +1752,7 @@ FIRST: check HOME outcome @21
 
 ## FRI 20 NOV
 FIRST: (wk) Q4 summary note
-12:00 × summary → tracker
+12:00 – summary → tracker
 16:00 = Friday fog. Light.
 – front @63, scratch at S11 (p70)
   → ~5 pages. vol 04 this Sunday.
@@ -1773,7 +1775,7 @@ FIRST: buy the A6 notebook (vol 04)
   scrollIntoView after focus
   (@S12) — not fixed yet.
   NEXT stays on @61
-16:00 × Groceries   × Laundry
+16:00 – groceries + laundry → × @59
 – tomorrow: review + transition
   @66–67, then label vol 04.
 

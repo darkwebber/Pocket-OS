@@ -258,7 +258,7 @@
     font: 600 20px/1 var(--mono); cursor: pointer;
   }
   .bar button:disabled { opacity: .3; cursor: default; }
-  .bar button { transition: background .15s, transform .12s; }
+  .bar button { transition: background .15s, transform .12s; touch-action: manipulation; }
   .bar button:not(:disabled):hover { background: rgba(0,0,0,.05); }
   .bar button:not(:disabled):active { transform: scale(.92); background: rgba(0,0,0,.08); }
   .mid #where, .mid #about { transition: opacity .15s ease; }

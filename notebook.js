@@ -560,9 +560,12 @@
   }
 
   /* ---------- layout ---------- */
+  var lastW = 0, lastH = 0;
   function layout() {
     var r = stage.getBoundingClientRect();
     var aw = r.width, ah = r.height;
+    if (aw === lastW && ah === lastH && turn) return;   // spurious resize: keep the turn going
+    lastW = aw; lastH = ah;
     single = aw / ah < 1.12 || aw < 560;
     var vw = single ? W : 2 * W;
     scale = Math.min((aw - (single ? 14 : 40)) / vw, (ah - 24) / H);
@@ -667,7 +670,7 @@
     var T2 = turn; T2.leaving = false;
     var base = T2.fwd ? T2.C : T2.E, sx = T2.fwd ? -1 : 1, sy = top ? 1 : -1;
     // follow the mouse a little inside the zone
-    var px = T2.fwd ? (b.x - W) : (b.x - W), py = b.y;
+    var px = b.x - W, py = b.y;
     var want = { x: base.x + sx * 44 + (px - base.x) * .35, y: base.y + sy * 36 + (py - base.y) * .35 };
     animateTo(want, 140, EASE_OUT, 0, null);
   }
