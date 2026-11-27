@@ -147,7 +147,8 @@
 @SB:Title = SilverBullet note
 ↔ = linked both ways
 W43 = week 43    CAL = calendar
-grid:  • planned   × done   ~~•~~ moved
+grid: • = do it that day   × = done
+      struck • = day changed
 
 Capture first. One home per action.
 Link, don't copy.
