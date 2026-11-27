@@ -135,7 +135,7 @@
       body: `
 # POCKET OS · vol 03
 • action    × done     > moved
-< deferred  ○ event    – note
+< deferred  ○ event    – note, idea
 = feeling   ₹ spend    * priority
 ! insight   @ reference
 ~~strike~~ = cancelled
@@ -145,6 +145,9 @@
 @2.67a = entry a on that page
 @S3 = 3rd scratch page from back
 @SB:Title = SilverBullet note
+↔ = linked both ways
+W43 = week 43    CAL = calendar
+grid:  • planned   × done   ~~•~~ moved
 
 Capture first. One home per action.
 Link, don't copy.
@@ -154,7 +157,7 @@ Leave NEXT: when stopping.
 Missed days: restart, then rescue.
 
 Labels: FIRST: NEXT: PAUSE RESUME
-        WAIT: CAL — plain words.`
+        WAIT: — plain words.`
     },
     ibc: {
       about: 'Inside back cover · if found + privacy boundary (Art 16)',
@@ -217,7 +220,7 @@ Transition → vol 04	66–67
 
   P(2, 'pp2–3 · Later: – idea, • real but not now. Items leave with > (moved), × (done) or a strike (dropped) (Art 5.1, 5.3)', `
 # LATER
-key:  –  idea    •  real, not yet
+ideas + someday. not a to-do list.
 – Learn Triton basics
 – Rewrite blog about/ page
 > Bike service → W43 @31
