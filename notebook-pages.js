@@ -215,51 +215,51 @@ Transition → vol 04	66–67
 – index only what I'd want to find
   again without a date. not all.`);
 
-  P(2, 'pp2–3 · Later: ideas and non-urgent someday items. Moved (>) or done (×) when they leave (Art 5.1)', `
+  P(2, 'pp2–3 · Later: – idea, • real but not now. Items leave with > (moved), × (done) or a strike (dropped) (Art 5.1, 5.3)', `
 # LATER
-ideas + someday. not a to-do list.
-< Learn Triton basics
-< Rewrite blog about/ page
+– = idea   • = real, just not now
+– Learn Triton basics
+– Rewrite blog about/ page
 > Bike service → W43 @31
-< Try sourdough again (winter?)
+– Try sourdough again (winter?)
 × Return old library card
-< Read DDIA ch. 5–6
-< Photo backup → cold storage
-~~Build my own habit app~~
-   – tooling freeze. no.
-< Goa trip w/ family (Dec?)
-< Standing desk? > HOME @21
-< Vol catalogue in SB — only if
-   retrieval actually hurts
-< Basic Tamil phrases
-< 10-min stretch routine
-< Second-hand film camera?
-< Open-source the CUDA lab
-   (after it works end-to-end)
+– Read DDIA ch. 5–6
+> Photo backup → W43 @31
+~~– Build my own habit app~~
+    tooling freeze. no.
+– Goa trip with family?
+> Standing desk? → HOME @21
+– Vol catalogue in SB — only if
+    retrieval actually hurts
+– Basic Tamil phrases
+– 10-min stretch routine
+– Second-hand film camera?
+– Open-source the CUDA lab
+    (after it works end-to-end)
 × Cancel unused streaming sub
-< "Notes on restarting work"
-   ← from topic @29`);
+> "Notes on restarting work" → @4.2
+    ← from topic @29`);
 
   P(3, 'pp2–3 · Later fills, then threads on to p50 instead of squeezing (Art 7.2)', `
-< Visit the planetarium
-< Sort cables drawer > HOME @21
-< Re-read "Deep Work"?
-~~Learn Rust this month~~
-   – honest: not a priority
-< SilverBullet queries — explore
-< Call w/ ex-colleague
-   > CAL 10 Nov (mentor call)
-< Fix squeaky door hinge
-< Donate old clothes
-< SIP review — use real bank
-   statements, not the ₹ log
-< Cook 2 new dishes / month
-< Learn to sharpen kitchen knife
-< Look into a small balcony plant
-< Weekend trek, Jan
-< Bookshelf for the floor pile
-< Re-learn basic piano
-
+– Visit the planetarium
+> Sort cables drawer → HOME @21
+– Re-read "Deep Work"?
+~~• Learn Rust this month~~
+    honest: not a priority
+– SilverBullet queries — explore
+< Call w/ ex-colleague CAL 10 Nov
+    (mentor call)
+× Fix squeaky door hinge
+> Donate old clothes → @4.2
+> SIP review → @4.2
+    use real bank statements,
+    not the ₹ lines
+– Cook 2 new dishes / month
+– Learn to sharpen kitchen knife
+– Small balcony plant?
+– Weekend trek, Jan
+> Bookshelf for floor pile → @4.2
+– Re-learn basic piano
 
 
 
@@ -277,7 +277,7 @@ Fixed (CAL owns these):
 ○ Thu 19:00 dinner w/ cousins
 
 Waiting:
-WAIT: data access — check Wed
+WAIT: data access (@7) — chk Wed
 
 Themes: just open the book daily.
 
@@ -296,13 +296,13 @@ Themes: just open the book daily.
 [MTWTFSS] STANDALONE
 [••×····] × Expense claim (Sep)
 [·×·····] × Pay electricity bill
-[···•-··] < Bike service → LATER
-[····×··] × Groceries
+[···•-··] < Bike service LATER
+[·····×·] × Groceries
 [·····×·] × Laundry
-[··•-×··] × Reply landlord re: tap
+[·•·×···] × Reply landlord re: tap
 
 [MTWTFSS] PROJECT SESSIONS
-[×·××···] ANL @7
+[××××···] ANL @7
 [····××·] GPU @10
 
 – a session × ≠ project done.
@@ -320,10 +320,10 @@ RECONNECT: cal — sync Tue. nothing
 FIRST: open ANL query; run baseline
 10:05 – runs; 3 min, slow but ok
 10:40 × baseline matches last Q
-• Ask about data access
+× Ask about data access
 13:20 = sleepy after lunch; walk 5'
-15:10 × access request raised
-  WAIT: access — check Wed
+15:10 – access request raised
+  → WAIT on @7 (+ week @4)
 17:30 NEXT: split by tenure
 
 ## TUE 29 SEP
@@ -369,7 +369,7 @@ Continued @4.8`);
   (invisible work — it counts)
 14:45 RESUME ANL @7: nulls
 15:30 – nulls = 4% → rule on @7
-• Reply to landlord re: tap
+– landlord: tap leaking → row @5
 17:40 NEXT: segment B @7
 
 ## WED 30 SEP
@@ -378,13 +378,12 @@ FIRST: segment B — check the join
 {a}10:10 ! bug was "obvious" only
   after I wrote the question down.
   writing = thinking.
-11:00 × access granted (WAIT done)
-• Mark access done @7
+11:00 – access granted (WAIT done)
+× Mark access done @7   (16:50)
 12:30 ₹180 coffee + cake; skipped
   lunch, low energy
 15:00 = scattered. 3 tabs open →
   closed 2, back to one thing
-16:50 × Mark access done @7
 18:00 NEXT: report outline @7`);
 
   P(9, 'p9 · Park & Pivot: PAUSE line before the interruption, RESUME after (Art 9.3)', `
@@ -397,8 +396,9 @@ FIRST: report outline @7
   → ADHOC: help teammate w/ query
 11:00 × helped (30 min)
 11:05 RESUME @7 — curve
-13:00 • Book dentist (tooth twinge)
-16:30 × Reply landlord re: tap
+13:00 > Book dentist → W41 @15
+    (tooth twinge)
+16:30 – replied to landlord → × @5
 ○ 19:00 dinner w/ cousins
 21:30 ! FIRST: works when it's a
   physical step, not a topic
@@ -407,7 +407,7 @@ FIRST: report outline @7
 – Gandhi Jayanti. Light mode.
 FIRST: sketch the GPU idea on S1
 10:30 – sketch @S1
-  • Review S1 for actions
+× Review S1 for actions   (11:40)
 11:00 – it's multi-session → @10
 cont. @11 →`);
 
@@ -438,8 +438,8 @@ Continued @42 →`);
 
   P(11, 'p11 · Unplanned buys and feelings: ₹ and = are optional observations, not scores (Art 9.4, 12.3)', `
 ## FRI 2 OCT cont.
-11:40 × Review S1 for actions
-  → 3 bullets put on @10
+11:40 – S1 reviewed → 3 bullets
+  put on @10
 12:30 ₹1,450 headphones — "deal";
   bought in 4 min, didn't need
 15:00 – nap. fine. holiday.
@@ -463,11 +463,10 @@ NEXT: Sunday — weekly review`);
 FIRST: make chai; open book at p4
 – WEEKLY REVIEW #1 (15 min)
 1 RESCUE: scan @6–11 for open •
-  • Book dentist > W41 @15
-  × Ask about data access
-  × Reply landlord — Thu
-  × Mark access done @7
-  < Bike service — LATER @2
+  – Book dentist → moved > W41
+  – Mark access done @7 — closed
+  – Bike service → was < LATER
+  – all other • closed. clean.
 2 RECONCILE: ANL @7 NEXT ok.
   GPU @10 NEXT: backend
   — will need its own page
@@ -498,7 +497,7 @@ Reviewed through @13, 4 Oct
 
 ## notes for W41
 – report due Fri 16 — 2 weeks.
-– cousins visiting Sat 10 → CAL ×
+– cousins visiting Sat 10 → in CAL
 – one demanding task at a time.
 
 
@@ -549,11 +548,11 @@ Themes: deep work before 12,
               – landlord doing it
 
 [MTWTFSS] PROJECT SESSIONS
-[×·×·×··] ANL @7
-[·×·•·×·] GPU @10 / backend @17
+[×××××··] ANL @7
+[·××•···] GPU @10 / backend @17
 
-– struck intention on Thu, moved
-  to Fri. same row, no rewriting.`);
+– GPU Thu: planned, not done
+  (survival day). blank ≠ failure.`);
 
   P(16, 'p16 · FIRST: written the night before; a PAUSE breadcrumb makes the restart take 2 min (Art 9.1, 9.3)', `
 ## MON 5 OCT
@@ -625,28 +624,28 @@ FIRST: reason-code mapping (wk)
 15:00 × Pay credit card
 16:00 – 3 tabs → closed 2
 18:00 NEXT: chart review prep
-21:00 GPU: × nvcc in container
-  • Mark compile done @17`);
+21:00 GPU: nvcc in container works
+× Mark compile done @17   (Fri)`);
 
   P(19, 'p19 · Survival mode: one necessary action, nothing else. Light mode the next day (Art 14.1–14.2)', `
 ## THU 8 OCT
 – bad sleep, headache. SURVIVAL.
-• One necessary action:
+× One necessary action:
   reply to chart review comments
 FIRST: open the comments thread
-11:30 × replied. that's the day.
-– WAIT design review → done via
-  comments (W41 row)
+11:30 – replied. that's the day.
+– WAIT design review → closed via
+  the comments (@14)
 RESUME (if useful): mark compile
-  done @17 — happened Wed
+  done @17 — worked Wed
 
 ## FRI 9 OCT
 – better. Light mode.
-FIRST: × Mark compile done @17
+FIRST: mark compile done @17 ×
 10:30 – DECISION GPU: serverless,
   not VM (math @S3) → logged @10
 11:00 – ANL draft: charts 70%
-18:00 × Groceries
+18:00 – groceries done → × @15
 NEXT: Sat cousins. GPU Sun eve?`);
 
   P(20, 'p20 · Short review (≈5 min): rescue commitments, pick leads, skip the optional parts (Art 13.2)', `
@@ -659,8 +658,9 @@ NEXT: Sat cousins. GPU Sun eve?`);
 ## SUN 11 OCT · SHORT REVIEW
 low energy → the 5-minute version
 RESCUE: open • since @13
-  • Book dentist > W42 (2nd move)
-  × Mark compile done — Fri
+  – Book dentist → > W42 @23
+    (2nd move — watch it)
+  – Mark compile done: closed Fri
   PAUSE GPU @17 stderr — still
     live; it's the NEXT
 REORIENT: W42 → p22–23
@@ -685,8 +685,8 @@ Outcome: a desk I can sit at and
 × Lamp for evenings
     × move old lamp from shelf
 × Chair height
-~~• Standing desk~~ – not now;
-    revisit in spring → LATER @50
+< Standing desk LATER @50
+    not now; revisit in spring
 × Notebook spot: left of laptop
     × tray for book + pen
 WAIT: ~~arm delivery~~ × Sat 24
@@ -722,19 +722,19 @@ Min: one item.
 
   P(23, 'pp22–23 · An action migrated twice gets examined, not just moved again (Art 5.3)', `
 [MTWTFSS] STANDALONE
-[•·-····] • Book dentist (moved 2×)
-              → examine @27
+[•·-····] > Book dentist → W43 @31
+              (moved 2× → examined @27)
 [×······] × Order monitor arm
 [··×····] × Pay rent
-[····×··] × Groceries
+[·····×·] × Groceries
 [·····×·] × Laundry
 [···•···] ~~Call bank re: card~~
               – solved in the app
 [·×·····] × Birthday gift (cousin)
 
 [MTWTFSS] PROJECT SESSIONS
-[×××·×··] ANL @7 (report)
-[·×·×·×·] GPU @17
+[××·××··] ANL @7 (report)
+[×······] GPU @17 (stderr)
 [······×] HOME @21
 
 – Fri: report sent 16:40.`);
@@ -751,16 +751,16 @@ FIRST: (from last night) open the
 13:00 ₹350 lunch delivery
 15:00 × methods section
 19:30 GPU: try pipes for stderr
-20:30 × stderr captured! (@17a)
-  • Mark @17a done — × 20:35
-21:00 × dishes (exp. day 1)
+20:30 – stderr captured! (@17a)
+× Mark @17a done   (20:35)
+21:00 – dishes (exp. day 1)
 NEXT: charts final pass
 
 ## TUE 13 OCT
 FIRST: charts final pass
 10:00 × charts final
-11:00 × WAIT reason-code owner
-  replied (row on @22)
+11:00 – reason-code owner replied
+  → WAIT closed on @22
 ○ 11:00 sync — nothing new
 NEXT: limitations section`);
 
@@ -778,9 +778,9 @@ NEXT: limitations section`);
   along its eigenvectors; they
   don't rotate, only scale
   @SB:PCA Intuition
-• Explain it from memory next
-  study session (Sat?)
-21:00 × dishes
+× Explain it from memory next
+  study session   (Sat 17)
+21:00 – dishes (exp.)
 
 ## THU 15 OCT
 FIRST: report: limitations section
@@ -793,12 +793,12 @@ NEXT: proofread 2/2, send Fri`);
   P(26, 'p26 · A deadline: the project owns the action, the calendar owns the alert (Worked example E)', `
 ## FRI 16 OCT
 RECONNECT: report due 17:00 (CAL)
-* • Draft + send report  CAL 17:00
+  — the task lives on @7 (*)
 FIRST: proofread 2/2
 11:30 × proofread
 14:00 = nervous re: sending. sent
   it to myself first, then for real
-16:40 × REPORT SENT → × on @7
+16:40 – REPORT SENT → × on @7
   – removed the 17:00 alert
 17:00 – cohort-by-city ask → out of
   scope; logged on @7
@@ -817,13 +817,14 @@ NEXT: weekly review (full)`);
   P(27, 'p27 · Full weekly review; the twice-migrated dentist gets a clearer first step (Art 13.1, 5.3)', `
 ## SUN 18 OCT · WEEKLY REVIEW
 1 RESCUE @21–26:
-  × all • resolved or moved, except
-  • Book dentist — moved 2×.
+  – all • closed or moved, except
+    Book dentist — moved 2×.
     why? don't know which clinic;
-    I hate calling.
-    → • ask Amma for the clinic no.
-        (2 min, message)   × 18:20
-    → • call clinic Mon 10:00 CAL
+    I hate calling. smaller step:
+    × ask Amma for the clinic no.
+        (2 min, message)   18:20
+    → call clinic: W43 row @31,
+        Mon 10:00 alert in CAL
 2 RECONCILE:
   ANL @7 — report done; next =
     reason-code cut
@@ -844,8 +845,8 @@ cont. @28 →`);
   @25a PCA → CONNECT: done in SB
   @8a writing = thinking → LEAVE
   ₹ recorded this week:
-    350 + 150 + 1,900 + 2,100
-    = 4,500 (incomplete by design)
+    350 + 150 + 1,900 = 2,400
+    (incomplete by design)
   – pattern: 2 buys right after
     review videos (@11, @26)
 5 IMPROVE: next week I'll make
@@ -920,14 +921,14 @@ EXPERIMENT wk 2 (dishes)
 [×······] × Call dentist (CAL)
 [···×···] × Dentist appointment
 [··×····] × Bike service (from LATER)
-[····×··] × Groceries
+[·····×·] × Groceries
 [·····×·] × Laundry
-[·•-•···] × Renew domain
-[····•··] < Photo backup → LATER
+[·•×····] × Renew domain
+[····•··] < Photo backup LATER @50
 
 [MTWTFSS] PROJECT SESSIONS
-[·×·×···] ANL @7
-[××·×·×·] GPU @17
+[×·×××··] ANL @7
+[××××××·] GPU @17
 [·····×·] HOME @21 (arm install)
 
 – dentist: 3 weeks of migrating,
@@ -944,9 +945,9 @@ FIRST (work): reason-code cut
 12:00 RESUME: join codes
 16:00 × codes joined
 19:30 GPU: timeout via signal
-21:10 ~~• Timeout via signal~~
-  children survive → struck @17
-  • Timeout via process group
+21:10 – signal: children survive
+  → struck on @17; new • there:
+  timeout via process group
 NEXT: pgroup kill (notes @S6)
 
 ## TUE 20 OCT
@@ -966,13 +967,13 @@ FIRST: deploy timeout to Modal
 10:00 – work: reason-code cut 60%
 13:00 ₹420 lunch out w/ team
 15:30 × Renew domain
-21:00 × dishes
+21:00 – dishes (exp.)
 – FRICTION: busy days spill over
   2 pages. fine? → just watch.
 NEXT: resource limits @17
 
 ## THU 22 OCT
-○ 11:30 dentist × — filling;
+○ 11:30 dentist — filling done;
   follow-up Thu 5 Nov → CAL
 14:00 FIRST: resource limits @17
 15:30 × mem limit; GPU = 1
@@ -1014,7 +1015,7 @@ NEXT: review tomorrow
   P(35, 'p35 · Review decides the experiment: keep the cue, retire the tracking (Art 12.1)', `
 ## SUN 25 OCT · WEEKLY REVIEW
 1 RESCUE @32–34: clean.
-  < Photo backup → LATER
+  – photo backup: < LATER (row @31)
 2 RECONCILE:
   GPU: backend done. next branch:
     mobile editor (on @10 for now)
@@ -1065,11 +1066,12 @@ Themes: short week, 2 work days.
 [MTWTFSS] STANDALONE
 [×······] × Pack + charge things
 [·×·····] × Sweets for family
-[•······] > Return parcel → W45
+[•······] × Return parcel  CAL Tue 3
+              (done after the trip)
 
 [MTWTFSS] PROJECT SESSIONS
 [××·····] ANL tile
-[·×·····] GPU editor @10
+[×······] GPU editor @10
 
 – Wed–Sun blank. that's true,
   not a failure.
@@ -1099,32 +1101,32 @@ FIRST: tile spec questions → PM
 12:35 RESUME tile — breadcrumb, 2
   min. works again.
 19:30 GPU: editor options
-20:30 × pick editor: CodeMirror
+20:30 – picked CodeMirror
   → × on @10
 21:00 – packing list on S8
-  • Review S8 for actions
+× Review S8 for actions   (Tue)
 NEXT: tile mock v1
 
 ## TUE 27 OCT · DAY 30
 FIRST: tile mock v1
-○ 11:00 sync — × spec arrived
-– 30 days of vol 03 practice →
-  DAY 30 CHECK @39
+○ 11:00 sync — spec arrived
+  (WAIT closed)
+– day 30 of vol 03 → check @39
 cont. @40 →`);
 
   P(39, 'p39 · Day-30 check: qualitative acceptance tests + one small amendment (Art 17.2–17.3)', `
 # DAY 30 CHECK	27 OCT
-• opened the book most days?
+– opened the book most days?
     yes — 26 of 30
-• does opening it make starting
+– does opening it make starting
   easier?  yes. FIRST: is the trick
-• resume without rereading days?
+– resume without rereading days?
     yes — PAUSE + NEXT: lines
-• anything important missed?
+– anything important missed?
     no. dentist was slow (@27)
-• add a subtask without a mess?
+– add a subtask without a mess?
     yes — branch @17 worked
-• find an old insight?
+– find an old insight?
     yes — @2.67a via topic @29
 FRICTION seen more than once:
   – weekly grid cramped (@5, @13)
@@ -1142,18 +1144,19 @@ NOT changing: anything else.
 16:30 – leaving tomorrow early.
   NEXT (wk): tile v2 from feedback
   NEXT (GPU): editor ↔ backend
-  protected: return parcel → CAL
-21:30 × Review S8 — all packed
+  protected: return parcel — row
+  @37 + CAL Tue alert
+21:30 – S8 reviewed: all packed
 
 
 
 
 ## MON 2 NOV — RESET
-Right now: • unpack; charge laptop
+Right now: × unpack; charge laptop
 FIRST: open tracker + cal for
   anything urgent (10 min box)
-09:40 × nothing on fire. 1 review
-  comment → • reply today
+09:40 – nothing on fire. 1 review
+  comment → × reply today (14:00)
 09:45 – RESET took 4 minutes.
   no debt. no repair.
 cont. @41 →`);
@@ -1164,12 +1167,11 @@ stage 2, after lunch, 15-min box
 – last boundary: "Reviewed
   through @35" → scan @36–40
 – phone notes from the trip (3):
-  • Call uncle re: documents
-  < Train tickets for Dec → LATER
+  > Reply uncle re: docs → W45
+  < Train tickets for Dec LATER
   ~~• GPU leaderboard!!~~
     – no. not now.
-× Reply to review comment
-• Return parcel (CAL Tue)
+– parcel: still on @37, CAL Tue
 – W44 spread: not reviving it.
 – GPU @10 page is crowded →
   checkpoint tomorrow
@@ -1195,7 +1197,7 @@ Outcome: run CUDA from a mobile
     × CodeMirror (from @10)
     × wire editor → /run
     × show stderr nicely
-• Deployment
+× Deployment
     × CORS header (@S10)
     × rate limit per IP
     ~~• custom domain~~ – no need
@@ -1214,7 +1216,7 @@ Continued @4.6 →
 13:00 – checkpoint done @42:
   old • on @10 marked >,
   directory updated 10 → 42
-14:00 × Return parcel (post office)
+14:00 – parcel returned → × @37
   ₹95 postage
 15:30 – work: next = tile review Thu
 17:00 = still tired from the trip;
@@ -1274,18 +1276,18 @@ AMENDMENT test (from @39):
 
 [···×···] × Dentist follow-up
 
-[··•-×··] × Diwali shopping
+[··•··×·] × Diwali shopping
 
-[···•×··] × Clean home (Diwali)
+[···•·×·] × Clean home (Diwali)
 
-[··•····] < Train tickets → LATER
+[····×··] × Diwali clothes
 
 
 [MTWTFSS] PROJECT SESSIONS
 
-[··××·×·] GPU @42
+[··×·××·] GPU @42
 
-[···×···] ANL tile
+[···××··] ANL tile
 
 
 – bigger rows: easier to write.
@@ -1296,14 +1298,14 @@ AMENDMENT test (from @39):
 FIRST: editor POST → /run @42
 11:00 – work light: emails, tile
   notes
-20:00 × editor talks to backend!!
+20:00 – editor talks to backend!!
   output shows in the page
-  • Mark @42 done — × 20:05
+× Mark @42 done   (20:05)
 NEXT: show stderr nicely
 
 ## THU 5 NOV
-○ 11:30 dentist follow-up ×
-○ 15:00 tile review ×
+○ 11:30 dentist follow-up
+○ 15:00 tile review
 16:00 – tile: 2 changes, then ship
   (tracker updated)
 16:30 × Reply uncle re: docs
@@ -1348,9 +1350,9 @@ FIRST: fix line offset @42
   P(48, 'p48 · Weekly review moved a day — Sunday is a suggestion, not a rule (Art 13.1)', `
 ## SAT 7 NOV · WEEKLY REVIEW
 (Sun is Diwali → a day early)
-1 RESCUE @41–47:
-  × all resolved
-  < Train tickets → LATER @50
+1 RESCUE @41–47: all closed.
+  – Later full → threaded to @50;
+    train tickets written there
 2 RECONCILE:
   GPU @42 → NEXT: e2e test plan
   ANL: tile shipped. next is in
@@ -1396,25 +1398,24 @@ Changes for November (max 2):
   2. Sunday batch-cook for Mon–Tue
 `);
 
-  P(50, 'p50 · Later, threaded: "← @3" links back so either page leads to the other (Art 7.2)', `
+  P(50, 'p50 · Later, threaded: "← @3" links back. At volume end, real items move on (> @4.2); ideas stay (Art 7.2, 15.3)', `
 # LATER (cont.) ← @3	7 NOV
 > Train tickets for Dec visit
-    → W46 @53
-< Standing desk — revisit Apr
-< Photo backup → cold storage
-< GPU leaderboard? (no promise)
-< Read: "The Mom Test"
-< Weekend trek, Jan
-< Bookshelf for the floor pile
-< 10-min morning stretch
-< Re-learn basic piano
-< Write "restarting work" note
-    (from @29) — maybe in vol 04
+    → W46 @53   (from phone @41)
+> Photo backup → @4.2
+    (deferred again from W43 @31)
+> Standing desk — revisit Apr
+    → @4.2   (from HOME @21)
+~~– GPU leaderboard?~~
+    no: "ship the boring version
+    first" (@55)
+– Read: "The Mom Test"
+– 10-min morning stretch
+– Weekend trek, Jan
 
 – carry only what's still wanted
-  into vol 04 (@66). the rest
-  can stay here, findable.
-
+  into vol 04 (@66). ideas stay
+  here, findable via the index.
 
 
 
@@ -1488,13 +1489,13 @@ EXPERIMENT 2 · 24 h rule → @51
 
 [×······] × Train tickets (LATER)
 
-[··•-×··] × Tax docs to CA
+[··•-×··] * × Tax docs to CA
 
 [····•··] > Library book → W47
 
 [·×·····] × Mentor call prep
 
-[····×··] × Groceries
+[·····×·] × Groceries
 
 [·····×·] × Laundry
 
@@ -1503,7 +1504,7 @@ EXPERIMENT 2 · 24 h rule → @51
 
 [MTWTFSS] PROJECT SESSIONS
 
-[·×·×·×·] GPU @42
+[××·×·×·] GPU @42
 
 [·····×·] HOME @21 (lamp)`);
 
@@ -1541,16 +1542,16 @@ cont. @55 →`);
 18:50 ! "ship the boring version
   first" → GPU: no leaderboard
   @29
-21:00 × CORS fixed; e2e PASSES
+21:00 – CORS fixed; e2e PASSES
   from the phone!! → × @42
 
 ## WED 11 NOV
 FIRST: metric defs review (wk)
 10:00 × review
-11:00 × keyboard: next day, don't
+11:00 – keyboard: next day, don't
   want it. (exp 2: no)
-13:00 WAIT quota: no reply →
-  • follow up Fri (CAL)
+13:00 – quota: no reply → follow
+  up Fri; CAL alert (WAIT @52)
 NEXT: rate limit per IP @42`);
 
   P(56, 'p56 · Light mode on a tired Friday: protect the time-bound things first (Art 14.1)', `
@@ -1565,12 +1566,13 @@ NEXT: rate limit per IP @42`);
 
 ## FRI 13 NOV
 RECONNECT: tax docs 17:00 (CAL)
-* FIRST: tax docs to CA × 10:15
-11:00 × follow up quota — approved
-  (WAIT closed)
+FIRST: tax docs to CA (row @53)
+10:15 – sent → × @53
+11:00 – followed up quota:
+  approved. WAIT closed @52
 14:00 = tired. Light mode.
-  protected: tax ×, quota ×
-• Return library book > W47
+  protected: tax + quota, done
+– library book: not today
 NEXT: test limiter with 2 phones
 
 
@@ -1583,13 +1585,13 @@ NEXT: test limiter with 2 phones
 ## SAT 14 NOV
 FIRST: test limiter with 2 phones
 11:00 × limiter ok → × @42
-12:00 × jacket ₹1,800 — waited
-  24 h, still wanted it (@51)
+12:00 ₹1,800 jacket — waited 24 h,
+  still wanted it (@51)
 15:00 HOME: × lamp moved @21
 
 ## SUN 15 NOV · WEEKLY REVIEW
-1 RESCUE @54–57: • library book
-  > W47. rest clean.
+1 RESCUE @54–57: library book
+  row > W47 @59. rest clean.
 2 RECONCILE: GPU @42 → editor UX
   needs its own page (Tue)
   HOME: only the tray left
@@ -1609,7 +1611,7 @@ Lead personal: editor UX @61
 
 Fixed:
 ○ Tue 11:00 sync
-○ Sat 21 — buy vol 04 notebook
+○ Sun 22 review + vol 04 (CAL)
 
 Waiting:
 WAIT: — none —
@@ -1640,7 +1642,7 @@ Themes: close loops. HOME done.
 
 [·····×·] × Buy A6 notebook (vol 04)
 
-[····×··] × Groceries
+[·····×·] × Groceries
 
 [·····×·] × Laundry
 
@@ -1651,9 +1653,9 @@ Themes: close loops. HOME done.
 
 [MTWTFSS] PROJECT SESSIONS
 
-[·××·×··] GPU editor @61
+[·×××···] GPU editor @61
 
-[···×···] HOME @21 (tray)`);
+[··×····] HOME @21 (tray)`);
 
   P(60, 'p60 · Low energy, no project work — and no guilt line needed', `
 ## MON 16 NOV
@@ -1762,8 +1764,8 @@ NEXT: iOS scroll bug @61
   P(64, 'p64 · The front is about to meet the scratch section (Art 3.1, 15.2)', `
 ## SAT 21 NOV
 FIRST: buy the A6 notebook (vol 04)
-11:00 × bought: kraft, dot grid,
-  80 pages, thread-bound. ₹320
+11:00 – bought → × @59: kraft, dot
+  grid, 80 pages, thread-bound. ₹320
 14:00 – iOS jump: needs
   scrollIntoView after focus
   (@S12) — not fixed yet.
@@ -1818,7 +1820,7 @@ Reviewed through @65, 22 Nov
   key, index @4.1, Later @4.2–3
 2 RESCUE standalone + WAIT:
   > 6 Later items still wanted
-    → @4.2 (the rest stay @50)
+    → @4.2. ideas stay here.
   WAIT: none open
 3 CHECKPOINTS (state, not history)
   GPU        @42 → @4.6
@@ -1842,7 +1844,7 @@ forwarding marks written:
   @10, @42 "Continued @4.6"
   @61 "Continued @4.7"
   @7 "Continued @4.8"
-  Later @50: 6 items "> @4.2"
+  Later @2–3, @50: 6 × "> @4.2"
 index @1: final state. topics stay
   here (vol 03 = 28 Sep – 22 Nov)
 privacy check: no passwords, no
