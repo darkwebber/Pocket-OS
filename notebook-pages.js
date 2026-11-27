@@ -149,7 +149,7 @@
 
 Week: • action / @ project session;
   append together. No fixed blocks.
-Day × = work happened; task × = done.
+grid:  • planned   × worked   ~~•~~ dropped
 
 Capture first. One home per action.
 Link, don't copy. Continue, don't reserve.
