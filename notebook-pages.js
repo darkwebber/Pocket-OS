@@ -217,7 +217,7 @@ Transition → vol 04	66–67
 
   P(2, 'pp2–3 · Later: – idea, • real but not now. Items leave with > (moved), × (done) or a strike (dropped) (Art 5.1, 5.3)', `
 # LATER
-– = idea   • = real, just not now
+key:  –  idea    •  real, not yet
 – Learn Triton basics
 – Rewrite blog about/ page
 > Bike service → W43 @31
