@@ -131,34 +131,33 @@
         '<div class="stamp">A6 · 105 × 148 mm<br>dot grid 5 mm · 80 pages</div>'
     },
     ifc: {
-      about: 'Inside front cover · the key: the only thing copied from the docs (Art 4.1, field card)',
+      about: 'Inside front cover · the v3.1 key card: marks, addresses, week-pool rules (Art 4.1, field card)',
       body: `
 # POCKET OS · vol 03
 • action    × done     > moved
-< deferred  ○ event    – note, idea
-= feeling   ₹ spend    * priority
-! insight   @ reference
+< scheduled/deferred   ○ event
+– note, idea   = feeling   ₹ spend
+* priority   ! insight   @ reference
 ~~strike~~ = cancelled
 
 @42 = this vol, page 42
 @2.67 = vol 2, page 67
 @2.67a = entry a on that page
-@S3 = 3rd scratch page from back
+@S3 = scratch page 3 (from back)
 @SB:Title = SilverBullet note
-↔ = linked both ways
-W43 = week 43    CAL = calendar
-grid: • = do it that day   × = done
-      struck • = day changed
+↔ = linked both ways   W43 = week 43
+
+Week: • action / @ project session;
+  append together. No fixed blocks.
+Day × = work happened; task × = done.
 
 Capture first. One home per action.
-Link, don't copy.
-Continue, don't reserve.
+Link, don't copy. Continue, don't reserve.
 Calendar owns timed commitments.
 Leave NEXT: when stopping.
 Missed days: restart, then rescue.
-
 Labels: FIRST: NEXT: PAUSE RESUME
-        WAIT: — plain words.`
+  WAIT: CAL: — plain words.`
     },
     ibc: {
       about: 'Inside back cover · if found + privacy boundary (Art 16)',
@@ -195,10 +194,10 @@ front 1–68 · scratch S1–S12`
   P(1, 'p1 · Index: active directory (where live state is) + selective topic index (Art 10.3–10.4)', `
 # INDEX
 ACTIVE DIRECTORY
-GPU  CUDA Playground	~~10~~ → 42 → @4.6
+GPU  CUDA Playground	~~10~~ → 42 → @4.3
    └ backend	17 [done]
-   └ mobile editor	61 → @4.7
-ANL  Retention (work)	7 → @4.8
+   └ mobile editor	61 → @4.6
+ANL  Retention (work)	7 → @4.7
 HOME Desk setup	21 [done 19 Nov]
 SCH  Schrollar	@2.23 [parked]
 LATER	2–3 → 50
@@ -219,12 +218,11 @@ Transition → vol 04	66–67
 – index only what I'd want to find
   again without a date. not all.`);
 
-  P(2, 'pp2–3 · Later: – idea, • real but not now. Items leave with > (moved), × (done) or a strike (dropped) (Art 5.1, 5.3)', `
-# LATER
-ideas + someday. not a to-do list.
+  P(2, 'pp2–3 · Later, carried from vol 02 at setup (Art 15.3), so a real collection, not a reservation. – idea, • real item; > / × / strike when they leave', `
+# LATER	28 SEP
+carried from vol 02 (@2.78–79)
 – Learn Triton basics
 – Rewrite blog about/ page
-> Bike service → W43 @31
 – Try sourdough again (winter?)
 × Return old library card
 – Read DDIA ch. 5–6
@@ -241,84 +239,69 @@ ideas + someday. not a to-do list.
 – Open-source the CUDA lab
     (after it works end-to-end)
 × Cancel unused streaming sub
-> "Notes on restarting work" → @4.2
-    ← from topic @29`);
-
-  P(3, 'pp2–3 · Later fills, then threads on to p50 instead of squeezing (Art 7.2)', `
 – Visit the planetarium
 > Sort cables drawer → HOME @21
-– Re-read "Deep Work"?
 ~~• Learn Rust this month~~
-    honest: not a priority
+    honest: not a priority`);
+
+  P(3, 'pp2–3 · New items are appended after the carried ones; when full, Later threads on to p50 (Art 7.2)', `
 – SilverBullet queries — explore
-< Call w/ ex-colleague CAL 10 Nov
-    (mentor call)
 × Fix squeaky door hinge
 > Donate old clothes → @4.2
 > SIP review → @4.2
     use real bank statements,
     not the ₹ lines
 – Cook 2 new dishes / month
-– Learn to sharpen kitchen knife
-– Small balcony plant?
-– Weekend trek, Jan
 > Bookshelf for floor pile → @4.2
 – Re-learn basic piano
-
+– Re-read "Deep Work"?
+added in vol 03:
+> Bike service → W43 @31   (1 Oct)
+< Call w/ ex-colleague CAL 10 Nov
+    (mentor call)   (6 Oct)
+> "Notes on restarting work" → @4.2
+    ← from topic @29   (18 Oct)
+– Small balcony plant?   (20 Oct)
+– Weekend trek, Jan   (24 Oct)
 
 
 LATER continued @50 →`);
 
-  P(4, 'pp4–5 · Weekly spread, left: lead outcomes, fixed events (calendar owns them), waiting (Art 8.1)', `
+  P(4, 'pp4–5 · Week, left page: a rolling context list. Leads, events, waiting and notes are appended as they come; no sections (Art 8.1)', `
 # WEEK 40 · 28 SEP – 4 OCT
 first week of vol 03 — keep it small
-
-Lead work: ANL baseline @7
-Lead personal: start GPU playground
-
-Fixed (CAL owns these):
+W: ANL baseline
+P: start the GPU playground
 ○ Tue 11:00 team sync
-○ Thu 19:00 dinner w/ cousins
-
-Waiting:
-WAIT: data access (@7) — chk Wed
-
+○ Thu 19:00 dinner w/ cousins (CAL)
 Themes: just open the book daily.
+× WAIT: data access — chk Wed
+    (raised Mon, granted Wed)
+– Tue: ANL got a page → @7
+– Tue: report due Fri 16 Oct (CAL)
+– Fri: holiday. GPU page → @10`);
 
-
-
-
-
-
-
-
-
-– 1 lead work + 1 lead personal.
-  everything else is maintenance.`);
-
-  P(5, 'pp4–5 · Alastair grid: • planned day, × done day; the row itself shows the outcome (Art 8.2)', `
-[MTWTFSS] STANDALONE
-[••×····] × Expense claim (Sep)
+  P(5, 'pp4–5 · One weekly pool: • / × rows are tasks, @page rows are project sessions, appended as they arrive (Art 8.1–8.2)', `
+[MTWTFSS] WEEKLY POOL
+[--×····] × Expense claim (Sep)
 [·×·····] × Pay electricity bill
-[···•-··] < Bike service LATER
-[·····×·] × Groceries
+[···--··] < Bike service LATER
+[····×··] × Groceries
 [·····×·] × Laundry
-[·•·×···] × Reply landlord re: tap
+[××××···] @7 ANL baseline
+[·-·×···] × Reply landlord re: tap
+[····××·] @10 GPU playground
 
-[MTWTFSS] PROJECT SESSIONS
-[××××···] ANL @7
-[····××·] GPU @10
-
-– a session × ≠ project done.
-  the project page owns that.
-
+– day × = worked on it that day.
+  leading × = task done. @ rows
+  are sessions, never "done".
 – FRICTION: grid cramped with my
   handwriting → test @S2`);
 
   P(6, 'p6 · Daily log: date at the next blank line, RECONNECT, one physical FIRST:, NEXT: to stop (Art 9.1)', `
 ## MON 28 SEP
 – Vol 03 started: key, index p1,
-  Later p2–3, week p4–5. 15 min.
+  Later carried p2–3, week p4–5.
 RECONNECT: cal — sync Tue. nothing
   urgent today.
 FIRST: open ANL query; run baseline
@@ -327,7 +310,7 @@ FIRST: open ANL query; run baseline
 × Ask about data access
 13:20 = sleepy after lunch; walk 5'
 15:10 – access request raised
-  → WAIT on @7 (+ week @4)
+  → • WAIT on week @4
 17:30 NEXT: split by tenure
 
 ## TUE 29 SEP
@@ -357,14 +340,13 @@ Outcome: segment retention readout
     × codes mapping   × join
 • Follow-up dashboard tile
     × spec  × mock v1  × v2 shipped
-    > Q4 follow-ups → @4.8
-WAIT: ~~events access~~ × Wed 30
+    > Q4 follow-ups → @4.7
 {a}– 6 Oct DECISION: add reason
   codes. agreed in sync; tracker
   updated.
 Refs: tracker ANL-2xx · approved NB
-NEXT: see @4.8
-Continued @4.8`);
+NEXT: see @4.7
+Continued @4.7`);
 
   P(8, 'p8 · Log continues after a project page ("cont."); pending update • Mark … @7 (Art 3.3, 5.2)', `
 ## TUE 29 SEP cont.
@@ -382,8 +364,7 @@ FIRST: segment B — check the join
 {a}10:10 ! bug was "obvious" only
   after I wrote the question down.
   writing = thinking.
-11:00 – access granted (WAIT done)
-× Mark access done @7   (16:50)
+11:00 – access granted → × WAIT @4
 12:30 ₹180 coffee + cake; skipped
   lunch, low energy
 15:00 = scattered. 3 tabs open →
@@ -468,7 +449,7 @@ FIRST: make chai; open book at p4
 – WEEKLY REVIEW #1 (15 min)
 1 RESCUE: scan @6–11 for open •
   – Book dentist → moved > W41
-  – Mark access done @7 — closed
+  – WAIT data access: closed Wed
   – Bike service → was < LATER
   – all other • closed. clean.
 2 RECONCILE: ANL @7 NEXT ok.
@@ -514,49 +495,36 @@ Reviewed through @13, 4 Oct
 
 `);
 
-  P(14, 'pp14–15 · Week 41 spread', `
+  P(14, 'pp14–15 · Week 41 · context list grows during the week; a WAIT owned here is an open • (Art 5.3, 8.1)', `
 # WEEK 41 · 5–11 OCT
-Lead work: report charts @7
-Lead personal: GPU backend → page
-
-Fixed:
+W: report charts @7
+P: GPU backend @10
 ○ Tue 11:00 sync
-○ Sat 10 cousins visiting
-
-Waiting:
-WAIT: design review of charts
-  — check Thu
-
+○ Sat 10 cousins visiting (CAL)
+× WAIT: design review of charts
+    — chk Thu (closed via comments)
 Themes: deep work before 12,
   meetings + admin after.
+– Tue: backend branch → @17
+– Thu: rough → survival day (@19).
+  that's allowed.`);
 
-
-
-
-
-
-
-
-– Thu was rough → survival day
-  (@19). that's allowed.`);
-
-  P(15, 'pp14–15 · Rows resolve by outcome: done, moved, deferred or struck (Art 8.2)', `
-[MTWTFSS] STANDALONE
-[•-·····] > Book dentist → W42 @23
+  P(15, 'pp14–15 · Struck day cells = intention dropped; the row keeps its place and the leading mark carries the status (Art 8.2)', `
+[MTWTFSS] WEEKLY POOL
+[--·····] > Book dentist → W42 @23
 [×······] × Renew bus pass
 [··×····] × Pay credit card
 [····×··] × Groceries
-[·····×·] × Clean before cousins
 [······×] × Laundry
-[··•·-··] ~~Fix bookshelf~~
-              – landlord doing it
+[×××××··] @7 ANL report charts
+[·××-···] @10 GPU backend
+[··-·-··] ~~• Fix bookshelf~~
+              landlord doing it
+[····×··] × Clean before cousins
 
-[MTWTFSS] PROJECT SESSIONS
-[×××××··] ANL @7
-[·××•···] GPU @10 / backend @17
-
-– GPU Thu: planned, not done
-  (survival day). blank ≠ failure.`);
+– GPU row stays @10 though the work
+  moved to the child @17: the
+  reference resolves via the parent.`);
 
   P(16, 'p16 · FIRST: written the night before; a PAUSE breadcrumb makes the restart take 2 min (Art 9.1, 9.3)', `
 ## MON 5 OCT
@@ -693,25 +661,22 @@ Outcome: a desk I can sit at and
     not now; revisit in spring
 × Notebook spot: left of laptop
     × tray for book + pen
-WAIT: ~~arm delivery~~ × Sat 24
+× WAIT: arm delivery — chk Fri
+    (came Sat 24)
 – sketch @S4
 
 OUTCOME MET 19 Nov — closed.
   index: [done]
 `);
 
-  P(22, 'pp22–23 · Week 42 + a two-week lifestyle experiment: cue, small action, review point (Art 12.1)', `
+  P(22, 'pp22–23 · Week 42 + an experiment tracker as a context entry, outside the task grid (Art 8.2, 12.1)', `
 # WEEK 42 · 12–18 OCT
-Lead work: send report (Fri 17:00)
-Lead personal: GPU stderr @17
-
-Fixed:
+W: send report @7 (Fri 17:00)
+P: GPU stderr @17
 ○ Wed 14:00 planning
 ○ Fri 17:00 report due (CAL alert)
-
-Waiting:
-WAIT: reason-code owner — chk Wed
-
+× WAIT: reason-code owner — chk Wed
+    (replied Tue)
 Themes: report first, always.
 
 EXPERIMENT · 2 weeks (12–25 Oct)
@@ -720,27 +685,25 @@ After dinner → load the dishes
 Min: one item.
 [MTWTFSS]
 [×·××·×·]
-
   → week 2 on @30
 – a blank is not a failure.`);
 
-  P(23, 'pp22–23 · An action migrated twice gets examined, not just moved again (Art 5.3)', `
-[MTWTFSS] STANDALONE
-[•·-····] > Book dentist → W43 @31
+  P(23, 'pp22–23 · A standalone task arriving after project rows just takes the next row (Art 8.1, worked example G)', `
+[MTWTFSS] WEEKLY POOL
+[-·-····] > Book dentist → W43 @31
               (moved 2× → examined @27)
-[×······] × Order monitor arm
 [··×····] × Pay rent
 [·····×·] × Groceries
 [·····×·] × Laundry
-[···•···] ~~Call bank re: card~~
-              – solved in the app
+[××·××··] @7 ANL report
+[×······] @17 GPU stderr
+[×······] @21 HOME desk
 [·×·····] × Birthday gift (cousin)
+[···-···] ~~• Call bank re: card~~
+              solved in the app
 
-[MTWTFSS] PROJECT SESSIONS
-[××·××··] ANL @7 (report)
-[×······] GPU @17 (stderr)
-[······×] HOME @21
-
+– gift came Mon, bank Wed: both
+  just appended below the @ rows.
 – Fri: report sent 16:40.`);
 
   P(24, 'p24 · Interstitial journaling: timestamps only where sequence matters (Art 9.2)', `
@@ -895,45 +858,32 @@ synthesis + links, not copies
   version first" — same family @55
 `);
 
-  P(30, 'pp30–31 · Week 43 · experiment week 2 and its review point', `
+  P(30, 'pp30–31 · Week 43 · events stay on the context list (the calendar owns them); experiment week 2', `
 # WEEK 43 · 19–25 OCT
-Lead work: reason-code cut @7
-Lead personal: GPU timeout @17
-
-Fixed:
-○ Mon 10:00 call dentist (CAL)
-○ Thu 11:30 dentist (CAL)
+W: reason-code cut @7
+P: GPU timeout @17
 ○ Tue 11:00 sync
-
-Waiting:
-WAIT: monitor arm — check Fri
-
+○ Thu 11:30 dentist (CAL)
+WAIT: monitor arm @21 — chk Fri
 Themes: shutdown = a NEXT: line,
   nothing more.
 
-EXPERIMENT wk 2 (dishes)
+EXPERIMENT wk 2 (dishes) ← @22
 [MTWTFSS]
 [××·×××·]
-– 5/7. decide at the review @35
-
-
-
-`);
+– 5/7. decide at the review @35`);
 
   P(31, 'pp30–31 · A row pulled in from Later; a task deferred back to Later', `
-[MTWTFSS] STANDALONE
-[×······] × Call dentist (CAL)
-[···×···] × Dentist appointment
+[MTWTFSS] WEEKLY POOL
+[×······] × Call dentist  CAL Mon
 [··×····] × Bike service (from LATER)
 [·····×·] × Groceries
 [·····×·] × Laundry
-[·•×····] × Renew domain
-[····•··] < Photo backup LATER @50
-
-[MTWTFSS] PROJECT SESSIONS
-[×·×××··] ANL @7
-[××××××·] GPU @17
-[·····×·] HOME @21 (arm install)
+[××·××··] @7 ANL reason codes
+[××××××·] @17 GPU timeout
+[·····×·] @21 HOME arm install
+[·-×····] × Renew domain
+[····-··] < Photo backup LATER @50
 
 – dentist: 3 weeks of migrating,
   4 minutes of calling. noted.`);
@@ -1044,61 +994,33 @@ Reviewed through @35, 25 Oct`);
 
   P(36, 'pp36–37 · A short week: travel planned in, phone note as a temporary capture buffer (Art 2.1)', `
 # WEEK 44 · 26 OCT – 1 NOV
-Lead work: dashboard tile
-Lead personal: pick an editor
-
-Fixed:
+W: dashboard tile @7
+P: pick an editor @10
 ○ Tue 11:00 sync
 ○ Wed 07:10 train (CAL)
 ○ Wed – Sun family visit
-
-Waiting:
-WAIT: tile spec from PM — chk Tue
-
+× WAIT: tile spec from PM — chk Tue
+    (came Tue)
 Themes: short week, 2 work days.
 – travel: phone note = capture
-  buffer only. transfer after.
+  buffer only. transfer after.`);
 
-
-
-
-
-
-
-
-`);
-
-  P(37, 'pp36–37 · Blank past cells mean "nothing recorded" — never fill them in (Art 8.2)', `
-[MTWTFSS] STANDALONE
+  P(37, 'pp36–37 · Blank cells mean "nothing recorded" — never fill them in (Art 8.2)', `
+[MTWTFSS] WEEKLY POOL
 [×······] × Pack + charge things
 [·×·····] × Sweets for family
-[•······] × Return parcel  CAL Tue 3
+[-······] × Return parcel  CAL Tue 3
               (done after the trip)
-
-[MTWTFSS] PROJECT SESSIONS
-[××·····] ANL tile
-[×······] GPU editor @10
+[××·····] @7 ANL tile
+[×······] @10 GPU editor
 
 – Wed–Sun blank. that's true,
-  not a failure.
-
-
-
-
-
-
-
-
-
-
-
-
-`);
+  not a failure.`);
 
   P(38, 'p38 · Invisible work logged as ×; the day-30 mark of adoption (Art 9.4, 17.1)', `
 ## MON 26 OCT
 FIRST: tile spec questions → PM
-10:00 × sent; WAIT till Tue
+10:00 – sent → WAIT on @36
 10:30 – PAUSE: tile mock v1, start
   from v1 chart → ADHOC: urgent
   fix for leadership deck
@@ -1214,7 +1136,7 @@ Constraints: free tier; one request
 Refs: @SB:CUDA Lab Architecture
 NEXT: editor UX — see @61
 
-Continued @4.6 →
+Continued @4.3 →
 `);
 
   P(43, 'p43 · The checkpoint is recorded in the log and the directory is updated', `
@@ -1248,52 +1170,31 @@ NEXT: wire editor → /run @42
 
   P(44, 'pp44–45 · Midweek start is valid: only the days that are left (Art 8.1)', `
 # WEEK 45 · 2–8 NOV (from Wed)
-Lead work: tile review → ship
-Lead personal: editor → /run @42
-
-Fixed:
+W: tile review → ship @7
+P: editor → /run @42
 ○ Thu 11:30 dentist follow-up
 ○ Thu 15:00 tile review
 ○ Sun 8 Diwali — home, no work
-
-Waiting:
-WAIT: tile access perms — chk Thu
-
+× WAIT: tile access perms — chk Thu
+    (granted Thu)
 Themes: Light mode till Thu.
+– AMENDMENT test (from @39):
+  roomier grid on the right page →`);
 
-AMENDMENT test (from @39):
-  bigger grid on the right page →
+  P(45, 'pp44–45 · The roomier grid from the Day-30 amendment: more space per row, still one shared pool', `
+[MTWTFSS] WEEKLY POOL
 
+[··-×···] × Reply uncle re: docs
 
+[··-··×·] × Diwali shopping
 
+[···-·×·] × Clean home (Diwali)
 
+[··×·××·] @42 GPU editor + stderr
 
-
-
-
-
-`);
-
-  P(45, 'pp44–45 · Testing the amendment: a roomier grid, judged at the monthly review', `
-
-[MTWTFSS] STANDALONE
-
-[··•×···] × Reply uncle re: docs
-
-[···×···] × Dentist follow-up
-
-[··•··×·] × Diwali shopping
-
-[···•·×·] × Clean home (Diwali)
+[···××··] @7 ANL tile
 
 [····×··] × Diwali clothes
-
-
-[MTWTFSS] PROJECT SESSIONS
-
-[··×·××·] GPU @42
-
-[···××··] ANL tile
 
 
 – bigger rows: easier to write.
@@ -1462,42 +1363,24 @@ Changes for November (max 2):
 
 `);
 
-  P(52, 'pp52–53 · Week 46 · the experiment lives on its own page, the week just points to it', `
+  P(52, 'pp52–53 · Week 46 · the experiment lives on its own page; the week just points to it (Art 12.1)', `
 # WEEK 46 · 9–15 NOV
-Lead work: Q4 follow-ups (tracker)
-Lead personal: GPU e2e test @42
-
-Fixed:
+W: Q4 follow-ups (tracker)
+P: GPU e2e test @42
 ○ Tue 18:00 mentor call
 ○ Thu 11:00 sync
 ○ Fri 17:00 tax docs due (CAL)
-
-Waiting:
-WAIT: free-tier quota increase
-  — check Wed
-
+× WAIT: free-tier quota increase
+    — chk Wed (approved Fri)
 Themes: Sunday batch-cook (change 2)
+EXPERIMENT 2 · 24 h rule → @51`);
 
-EXPERIMENT 2 · 24 h rule → @51
-
-
-
-
-
-
-
-
-`);
-
-  P(53, 'pp52–53 · Week 46 grid (bigger rows kept after the monthly review)', `
-
-[MTWTFSS] STANDALONE
+  P(53, 'pp52–53 · Week 46 pool (roomier rows kept after the monthly review)', `
+[MTWTFSS] WEEKLY POOL
 
 [×······] × Train tickets (LATER)
 
-[··•-×··] * × Tax docs to CA
-
-[····•··] > Library book → W47
+[··--×··] * × Tax docs to CA
 
 [·×·····] × Mentor call prep
 
@@ -1507,12 +1390,11 @@ EXPERIMENT 2 · 24 h rule → @51
 
 [······×] × Sunday batch-cook
 
+[××·×·×·] @42 GPU e2e + limits
 
-[MTWTFSS] PROJECT SESSIONS
+[·····×·] @21 HOME lamp
 
-[××·×·×·] GPU @42
-
-[·····×·] HOME @21 (lamp)`);
+[····-··] > Library book → W47 @59`);
 
   P(54, 'p54 · A holiday with no FIRST: is allowed. Work steps stay in the tracker (Art 2.1)', `
 ## SUN 8 NOV
@@ -1612,35 +1494,18 @@ Reviewed through @57, 15 Nov`);
 
   P(58, 'pp58–59 · Week 47: closing loops, preparing the next volume (Art 15.2)', `
 # WEEK 47 · 16–22 NOV
-Lead work: Q4 follow-up #2
-Lead personal: editor UX @61
-
-Fixed:
+W: Q4 follow-up #2 (tracker)
+P: editor UX @42
 ○ Tue 11:00 sync
 ○ Sun 22 review + vol 04 (CAL)
-
-Waiting:
-WAIT: — none —
-
 Themes: close loops. HOME done.
   vol 04 transition on Sunday.
-
+– Tue: editor got a page → @61
 – book nearly full: front @58,
-  scratch already at S10 (p71).
+  scratch already at S10 (p71).`);
 
-
-
-
-
-
-
-
-
-`);
-
-  P(59, 'pp58–59 · Week 47 grid', `
-
-[MTWTFSS] STANDALONE
+  P(59, 'pp58–59 · Week 47 pool. At the volume change only open • rows move; @ session rows stay behind (Art 15.3)', `
+[MTWTFSS] WEEKLY POOL
 
 [×······] × Return library book
 
@@ -1654,14 +1519,11 @@ Themes: close loops. HOME done.
 
 [······×] × Sunday batch-cook
 
-[···•-··] ~~Call ISP~~ – fixed itself
+[·×××···] @42 GPU editor (→ @61)
 
+[··×····] @21 HOME tray
 
-[MTWTFSS] PROJECT SESSIONS
-
-[·×××···] GPU editor @61
-
-[··×····] HOME @21 (tray)`);
+[···--··] ~~• Call ISP~~ fixed itself`);
 
   P(60, 'p60 · Low energy, no project work — and no guilt line needed', `
 ## MON 16 NOV
@@ -1710,7 +1572,7 @@ Outcome: comfortable to write and
 Refs: wireframe @S11
 NEXT: tap error → jump to line
 
-Continued @4.7 →
+Continued @4.6 →
 
 `);
 
@@ -1806,7 +1668,7 @@ last review in vol 03
   already the NEXT on @61
 2 RECONCILE directory @1:
   GPU @42 + editor @61 → carry
-  ANL → my slice → @4.8
+  ANL → my slice → @4.7
   HOME done. SCH parked.
 3 REORIENT: W48 → vol 04
 4 LEARN: exp 2 (24 h rule): 2 of 3
@@ -1823,15 +1685,15 @@ Reviewed through @65, 22 Nov
   P(66, 'p66 · Volume transition: rescue, checkpoint live projects, qualify old addresses (Art 15.3)', `
 # VOL 03 → VOL 04	22 NOV
 1 vol 04 labelled "04 · Nov 2026–"
-  key, index @4.1, Later @4.2–3
+  key, index @4.1, Later @4.2
 2 RESCUE standalone + WAIT:
   > 6 Later items still wanted
     → @4.2. ideas stay here.
   WAIT: none open
 3 CHECKPOINTS (state, not history)
-  GPU        @42 → @4.6
-  Mobile ed. @61 → @4.7
-  ANL slice  @7  → @4.8
+  GPU        @42 → @4.3
+  Mobile ed. @61 → @4.6
+  ANL slice  @7  → @4.7
   – inherited addresses qualified:
     origin @3.10, backend @3.17
 4 dormant branches: none
@@ -1847,9 +1709,9 @@ cont. @67 →
   P(67, 'p67 · Forwarding references written in the old volume; privacy check before shelving (Art 15.3, 16)', `
 ## TRANSITION cont.
 forwarding marks written:
-  @10, @42 "Continued @4.6"
-  @61 "Continued @4.7"
-  @7 "Continued @4.8"
+  @10, @42 "Continued @4.3"
+  @61 "Continued @4.6"
+  @7 "Continued @4.7"
   Later @2–3, @50: 6 × "> @4.2"
 index @1: final state. topics stay
   here (vol 03 = 28 Sep – 22 Nov)

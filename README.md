@@ -1,6 +1,6 @@
 # Pocket OS
 
-A paper operating system for a single A6 notebook. Two printable pages (each fits one A4 sheet), plus a filled sample notebook you can page through.
+A paper operating system for a single A6 notebook (constitution v3.1). Two printable pages (each fits one A4 sheet), plus a filled sample notebook you can page through.
 
 | Page | What it is |
 | --- | --- |
